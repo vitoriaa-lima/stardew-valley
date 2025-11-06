@@ -1,0 +1,143 @@
+
+*{
+    margin: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+/* Estilização da Barra de Navegação COMEÇA AQUI */
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.navbar .opcoes{
+    display: flex;
+    gap: 55px;
+    font-family: "Inter", sans-serif;
+}
+
+.navbar .opcoes a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
+    font-size: 16px;
+}
+/* Estilização da Barra de Navegação ACABA AQUI */
+
+
+/* Estilização do Rodape COMEÇA AQUI */
+.footer-inicio{
+    display: flex;
+    justify-content: space-between;
+    background-color: #854D23;
+    padding: 30px 40px;
+}
+.footer-apresentacao{
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    font-family: "Ubuntu", sans-serif;
+    padding-bottom: 30px;
+}
+.footer-apresentacao p{
+    font-size: 12px;
+}
+
+.footer-titulo{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+.footer-titulo img{
+    width: 30px;
+}
+.footer-titulo h3{
+    font-size: 20px;
+}
+
+.footer-redes{
+    display: flex;
+    gap: 15px;
+    align-self: self-end;
+}
+.footer-redes img{
+    width: 35px;
+}
+
+.direitos{
+    background-color: #000;
+    color: #FFF;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    padding: 10px 0;
+    font-weight: 400;
+}
+/* Estilização do Rodape ACABA AQUI */
+
+
+/* Estilização do Banner COMEÇA AQUI */
+.banner {
+    display: flex;
+    flex-direction: column;
+    background-image: url('../assets/img/banner.png');
+    height: 950px;
+}
+
+.banner-titulo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+    gap: 40px;
+    padding-top: 150px;
+}
+
+.banner-titulo h1{
+    font-family: "Press Start 2P", system-ui;
+    font-size: 60px;
+    text-align: center;
+    color: #C29905;
+    text-shadow: -10px 10px 2px #00000044;
+}
+
+.banner-titulo h2{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    color: #010D1D;
+    text-align: center;
+}
+/* Estilização do Banner ACABA AQUI */
+
+
+/* Estilização do "Sobre o Jogo" COMEÇA AQUI */
+.sobre-jogo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    gap: 30px;
+}
+
+.sobre-jogo h1{
+    font-family: "Press Start 2P", system-ui;
+    font-size: 40px;
+    text-shadow: -3px 3px 2px #00000044;
+
+}
+
+.sobre-jogo p{
+    font-family: "Inter", sans-serif;
+    text-align: center;
+}
+
+.sobre-jogo img{
+    width: 80%;
+}
