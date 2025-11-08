@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Press+Start+2P&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" href="./assets/icon/icone.svg">
+    <link rel="stylesheet" href="./style/style.css">
+    <title>Comunidade Junimo | Cadastro</title>
+</head>
+
+<body>
+    <main class="main-cadastro">
+        <div class="navbar">
+            <a href="./index.html">
+                <img src="./assets/img/topo.png" alt="topo Stardew Valley">
+            </a>
+
+            <div class="opcoes">
+                <a href="./index.html#sobre_jogo">SOBRE O JOGO</a>
+                <a href="./index.html#objetivos_sustentaveis">OBJETIVOS SUSTENTÁVEIS</a>
+                <a href="./login.html">LOGIN</a>
+            </div>
+        </div>
+
+        <div class="container-formulario">
+            <div class="formulario-titulo">
+                <div>
+                    <img src="./assets/img/galinha.svg">
+                    <h1>CADASTRO</h1>
+                </div>
+                <p>Crie uma conta e tenha acesso a informações úteis que<br>
+                    possam facilitar sua game-play!</p>
+            </div>
+
+            <div id="div_formulario_parte1" class="formulario">
+                <div class="formulario-campos">
+                    <div class="campo">
+                        <span>Nome</span>
+                        <input placeholder="Seu nome" type="text">
+                    </div>
+
+                    <div class="campo">
+                        <span>Email</span>
+                        <input placeholder="exemplo@gmail.com" type="text">
+                    </div>
+
+                    <div class="campo">
+                        <span>Gênero</span>
+                        <select>
+                            <option value="F">Feminino</option>
+                            <option value="M">Masculino</option>
+                            <option value="O">Outros</option>
+                            <option selected disabled value="#">Selecione</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <span>Data de Nascimento</span>
+                        <input type="date">
+                    </div>
+
+                    <div class="campo">
+                        <span>Senha</span>
+                        <input placeholder="******" type="txt">
+                    </div>
+
+                    <div class="campo">
+                        <span>Confirmar senha</span>
+                        <input placeholder="******" type="text">
+                    </div>
+                </div>
+
+                <button onclick="exibir()">Ir para a próxima etapa</button>
+                <span>Já tem uma conta? <a href="./login.html">Clique aqui</a>.</span>
+            </div>
+
+            <div id="div_formulario_parte2" class="formulario">
+                <div class="formulario-campos">
+                    <div class="campo">
+                        <span id="span_nome">Nome da Fazenda</span>
+                        <input placeholder="Fazendinha" type="text">
+                    </div>
+
+                    <div class="campo">
+                        <span>Email</span>
+                        <input placeholder="exemplo@gmail.com" type="text">
+                    </div>
+
+                    <div class="campo">
+                        <span id="span_personagem">Personagem Favorito</span>
+                        <select>
+                            <option>Feminino</option>
+                            <option>Masculino</option>
+                            <option>Outros</option>
+                            <option selected disabled value="#">Selecione uma opção</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <span id="span_coisa">Coisa Favorita</span>
+                        <input type="text">
+                    </div>
+
+                    <div class="campo">
+                        <span id="span_perfeicao">Alcançou a perfeição?</span>
+                        
+                        <select>
+                            <option value="">Sim</option>
+                            <option value="">Não</option>
+                            <option selected disabled value="">Selecione uma opção</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <span id="span_verdadeira">Alcançou a verdadeira perfeição?</span>
+                        
+                        <select>
+                            <option value="">Sim</option>
+                            <option value="">Não</option>
+                            <option selected disabled value="">Selecione uma opção</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button>Criar</button>
+                <span>Já tem uma conta? <a href="./login.html">Clique aqui</a>.</span>
+            </div>
+        </div>
+        
+
+        <div class="imagem-footer">
+            <img class="imagem-footer" src="./assets/img/girassois.png" alt="">
+        </div>
+
+    </main>
+</body>
+
+</html>
+
+<script>
+    div_formulario_parte2.style.display = 'none';
+    
+    function exibir() {
+        div_formulario_parte1.style.display = 'none';
+        div_formulario_parte2.style.display = 'flex';
+    }
+</script>
