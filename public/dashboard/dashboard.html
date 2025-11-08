@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,11 +12,10 @@
 
     <link rel="icon" href="./assets/icon/icone.svg">
     <link rel="stylesheet" href="../style/dashboard.css">
-    <title>Comunidade Junimo | Seu Espaço</title>
+    <title>Comunidade Junimo | Dashboard</title>
 </head>
-
 <body>
-    <main class="main-seu-espaco">
+    <main class="main-dashboard">
         <div class="navbar-lateral">
             <div class="lateral-saudacoes">
                 <div class="lateral-titulo">
@@ -29,12 +27,12 @@
                 <div class="lateral-opcoes">
                     <div class="opcao">
                         <img src="../assets/img/regador.svg">
-                        <span id="selecionada">Seu Espaço</span>
+                        <span>Seu Espaço</span>
                     </div>
 
                     <div class="opcao">
                         <img src="../assets/img/dashboard.svg">
-                        <span>Dashboard</span>
+                        <span id="selecionada">Dashboard</span>
                     </div>
 
                     <div class="opcao">
@@ -52,7 +50,7 @@
             </div>
         </div>
 
-        <div class="container-seu-espaco">
+        <div class="container-dashboard">
             <div class="navbar">
                 <a href="../index.html">
                     <img src="../assets/img/topo.png" alt="topo Stardew Valley">
@@ -71,48 +69,44 @@
                 </div>
             </div>
 
-            <div class="principal-seu-espaco">
-                <div class="favoritos">
-                    <div class="favorito fazenda-favorita">
-                        <div id="div_fazenda" class="imagem-favorita">
-                            <img src="">
-                        </div>
-                        <div class="descricao">
-                            <h4>Fazenda PixelFord!</h4>
-                            <p>A maior parte deste mapa é terra agrícola, ideal para cultivo e para criação de animais.</p>
-                            <p>Experimente cavar próximo a saída da sua fazenda, você pode ter uma surpresa!</p>
-                        </div>
-                    </div>
-
-                    <div class="favorito pet-favorita">
-                        <div id="div_pet" class="imagem-favorita">
-                            <img src="">
-                        </div>
-                        <div class="descricao">
-                            <h4>O gato cinza</h4>
-                            <p>Sabia que você não precisa encher a vasilha do seu pet todo dia? Mas não deixe ele com sede!</p>
-                            <p>Chapéus podem ser colocados em cachorros ou gatos.</p>
+            <div class="principal-dashboard">
+                <div class="metricas">
+                    <div class="metrica">
+                        <span>
+                            <img src="../assets/img/idade.svg">
+                        </span>
+                        <div class="metrica-titulo">
+                            <h1>20 anos</h1>
+                            <p>Idade média dos jogadores</p>
                         </div>
                     </div>
 
-                    <div class="favorito personagem-favorita">
-                        <div id="div_personagem" class="imagem-favorita">
-                            <img src="">
+                    <div class="metrica">
+                        <span>
+                            <img id="favoritado" src="../assets/img/robin.png" alt="">
+                        </span>
+                        <div class="metrica-titulo">
+                            <h1>Robin</h1>
+                            <p>Personagem mais favoritado</p>
                         </div>
-                        <div class="descricao">
-                            <h4>Leah</h4>
-                            <p>Leah faz aniversário dia 23 de Inverno. Experimente presentea-la com uma salada e veja a reação dela!</p>
-                            <p>Ela é um dos doze personagens disponíveis para casamento.</p>
+                    </div>
+
+                    <div class="metrica">
+                        <span>
+                            <img src="../assets/img/trofeu.svg">
+                        </span>
+                        <div class="metrica-titulo">
+                            <h1>45%</h1>
+                            <p>Alcançaram a perfeição</p>
                         </div>
                     </div>
                 </div>
 
-                <a href="">
-                    <img id="img-quiz" src="../assets/img/quiz.png">
-                </a>
+                <div class="graficos">
+
+                </div>
             </div>
         </div>
     </main>
 </body>
-
 </html>

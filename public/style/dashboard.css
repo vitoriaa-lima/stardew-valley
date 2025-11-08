@@ -3,7 +3,7 @@
     box-sizing: border-box;
 }
 
-.main-seu-espaco {
+.main-seu-espaco, .main-dashboard {
     display: flex;
     flex-direction: row;
     font-family: "Inter", sans-serif;
@@ -105,7 +105,7 @@
 
 
 /* Estilização Mural COMEÇA AQUI */
-.container-seu-espaco{
+.container-seu-espaco, .container-dashboard{
      display: flex;
     flex-direction: column;
     width: 100%;
@@ -130,8 +130,17 @@
 
 .imagem-favorita{
     width: 200px;
-    background-color: #3E2429;
 }
+#div_fazenda{
+    background-color: #E1633F;
+}
+#div_pet{
+    background-color: #63C6FD;
+}
+#div_personagem{
+    background-color: #8EDF42;
+}
+
 .favoritos{
     display: flex;
     flex-direction: column;
@@ -145,4 +154,44 @@
 
 #img-quiz{
     width: 185px;
+}
+/* Estilização Mural ACABA AQUI */
+
+
+/* Estilização Dashboard COMEÇA AQUI */
+.principal-dashboard{
+    padding: 5%;
+}
+
+.metricas{
+    display: flex;
+    justify-content: space-evenly;
+}
+.metrica{
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+.metrica span{
+    display: flex;
+    background-color: #CF963C;
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.metrica span img{
+    width: 35px;
+}
+.metrica #favoritado{
+    width: 55px;
+}
+
+.metrica-titulo h1{
+    font-size: 14px;
+}
+.metrica-titulo p{
+    font-size: 12px;
 }
