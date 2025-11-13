@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script src="./js/sessao.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Press+Start+2P&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+
+  <link rel="icon" href="./assets/icon/icone.svg">
+  <link rel="stylesheet" href="./css/estilo.css">
+  <title>Comunidade Junimo | Cadastro</title>
+</head>
+
+<body>
+  <main class="main-cadastro">
+    <div class="navbar">
+      <a href="./index.html">
+        <img src="./assets/img/topo.png" alt="topo Stardew Valley">
+      </a>
+
+      <div class="opcoes">
+        <a href="./index.html#sobre_jogo">SOBRE O JOGO</a>
+        <a href="./index.html#objetivos_sustentaveis">OBJETIVOS SUSTENTÁVEIS</a>
+        <a href="./login.html">LOGIN</a>
+      </div>
+    </div>
+
+    <div class="container-formulario">
+      <div class="formulario-titulo">
+        <div>
+          <img src="./assets/img/galinha.svg">
+          <h1>CADASTRO</h1>
+        </div>
+        <p>Crie uma conta e tenha acesso a informações úteis que<br>
+          possam facilitar sua game-play!</p>
+      </div>
+
+      <div id="div_formulario_parte1" class="formulario">
+        <div class="formulario-campos">
+          <div class="campo">
+            <span>Nome</span>
+            <input id="input_nome" placeholder="Seu nome" type="text">
+          </div>
+
+          <div class="campo">
+            <span>Email</span>
+            <input id="input_email" placeholder="exemplo@gmail.com" type="text">
+          </div>
+
+          <div class="campo">
+            <span>Gênero</span>
+            <select id="select_genero">
+              <option value="F">Feminino</option>
+              <option value="M">Masculino</option>
+              <option value="O">Outros</option>
+              <option selected disabled value="#">Selecione</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <span>Data de Nascimento</span>
+            <input id="input_data_nascimento" type="date">
+          </div>
+
+          <div class="campo">
+            <span>Senha</span>
+            <input id="senha_input" placeholder="******" type="txt">
+          </div>
+
+          <div class="campo">
+            <span>Confirmar senha</span>
+            <input id="input_confirmacao_senha" placeholder="******" type="text">
+          </div>
+        </div>
+
+        <span id="mensagem_erro"></span>
+        <button onclick="cadastrar()">Ir para a próxima etapa</button>
+        <span>Já tem uma conta? <a href="./login.html">Clique aqui</a>.</span>
+      </div>
+
+      <div id="div_formulario_parte2" class="formulario">
+        <div class="formulario-campos">
+          <div class="campo">
+            <span id="span_nome">Nome da Fazenda</span>
+            <input id="input_nome_fazenda" placeholder="Fazendinha" type="text">
+          </div>
+
+          <div class="campo">
+            <span id="span_favorita">Fazenda Favorita</span>
+            <select id="select_fazenda">
+              <option value="">Padrão</option>
+              <option value="">Entre Riachos</option>
+              <option value="">Colina</option>
+              <option value="">Remota</option>
+              <option value="">Quatro Cantos</option>
+              <option value="">Praia</option>
+              <option value="">Prado</option>
+              <option selected disabled value="#">Selecione uma opção</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <span id="span_animal">Animal Favorito</span>
+            <select id="select_animal">
+              <option value="1">Cachorro</option>
+              <option value="4">Gato</option>
+              <option value="7">Tartaruga</option>
+              <option selected disabled value="#">Selecione uma opção</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <span id="span_personagem">Personagem Favorito</span>
+            <select id="select_personagem">
+              <option value="1">Alex</option>
+              <option value="2">Abigail</option>
+              <option value="3">Harvey</option>
+              <option value="4">Shane</option>
+              <option value="5">Penny</option>
+              <option value="6">Leah</option>
+              <option value="7">Sebastian</option>
+              <option value="8">Elliot</option>
+              <option value="9">Maru</option>
+              <option value="10">Haley</option>
+              <option value="11">Emily</option>
+              <option value="12">Sam</option>
+              <option value="13">Linus</option>
+              <option value="14">Robin</option>
+              <option value="15">Demetrius</option>
+              <option value="16">Jodi</option>
+              <option value="17">Kent</option>
+              <option value="18">Caroline</option>
+              <option value="19">Pierre</option>
+              <option value="20">Gus</option>
+              <option value="21">Pam</option>
+              <option value="22">George</option>
+              <option value="23">Evelyn</option>
+              <option value="24">Clint</option>
+              <option value="25">Marnie</option>
+              <option value="26">Lewis</option>
+              <option value="27">Willy</option>
+              <option value="28">Krobus</option>
+              <option value="29">Sandy</option>
+              <option value="30">Wizard</option>
+              <option value="31">Leo</option>
+              <option selected disabled value="#">Selecione uma opção</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <span id="span_coisa">Coisa Favorita</span>
+            <input id="input_coisa_favorita" type="text">
+          </div>
+
+          <div class="campo">
+            <span id="span_perfeicao">Alcançou a perfeição?</span>
+
+            <select id="select_perfeicao">
+              <option value="1">Sim</option>
+              <option value="0">Não</option>
+              <option selected disabled value="#">Selecione uma opção</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <span id="span_verdadeira">Alcançou a verdadeira perfeição?</span>
+
+            <select id="select_verdadeira">
+              <option value="1">Sim</option>
+              <option value="0">Não</option>
+              <option selected disabled value="#">Selecione uma opção</option>
+            </select>
+          </div>
+        </div>
+
+        <button onclick="cadastrarParte2()">Criar</button>
+        <span>Já tem uma conta? <a href="./login.html">Clique aqui</a>.</span>
+      </div>
+    </div>
+
+
+    <div class="imagem-footer">
+      <img class="imagem-footer" src="./assets/img/girassois.png" alt="">
+    </div>
+
+  </main>
+</body>
+
+
+</html>
+
+<script>
+
+  div_formulario_parte2.style.display = 'none';
+
+  function cadastrar() {
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = input_nome.value;
+    var emailVar = input_email.value;
+    var generoVar = select_genero.value;
+    var dataNascimentoVar = input_data_nascimento.value;
+    var confirmacaoSenhaVar = input_confirmacao_senha.value;
+    var senhaVar = senha_input.value;
+
+    // Verificando se há algum campo em branco
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      generoVar == "#" ||
+      dataNascimentoVar == "" ||
+      confirmacaoSenhaVar == ""
+    ) {
+      mensagem_erro.innerHTML =
+        "Preencha todos os campos!";
+
+      finalizarAguardar();
+      return false;
+    } else if (senhaVar != confirmacaoSenhaVar) {
+      mensagem_erro.innerHTML =
+        "As senhas não são iguais!";
+
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        generoServer: generoVar,
+        dataNascimentoServer: dataNascimentoVar,
+        senhaServer: senhaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+          mensagem_erro.innerHTML =
+            "Primera parte realizada com sucesso...";
+
+          setTimeout(() => {
+            mensagem_erro.style.color = 'green';
+            div_formulario_parte1.style.display = 'none';
+            div_formulario_parte2.style.display = 'flex';
+          }, 100);
+
+          //limparFormulario();
+          //finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        //finalizarAguardar();
+      });
+      console.log('cad 1 completo')
+    return false;
+  }
+
+
+  function cadastrarParte2() {
+
+    var nomeVar = input_nome.value;
+    var emailVar = input_email.value;
+    var senhaVar = senha_input.value;
+
+    fetch("/usuarios/autenticar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        emailServer: emailVar,
+        senhaServer: senhaVar
+      })
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO entrar()!")
+
+      if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+          sessionStorage.EMAIL_USUARIO = json.email;
+          sessionStorage.NOME_USUARIO = json.nome;
+          sessionStorage.ID_USUARIO = json.id;
+
+          window.location = "./dashboard/mural.html";
+
+        });
+
+      } else {
+
+        console.log("Houve um erro ao tentar realizar o login!");
+
+        resposta.text().then(texto => {
+          console.error(texto);
+        });
+      }
+
+    }).catch(function (erro) {
+      console.log(erro);
+    })
+
+
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeFazendaVar = input_nome_fazenda.value;
+    var fazendaFavoritaVar = Number(select_fazenda.value);
+    var animalVar = Number(select_animal.value);
+    var personagemVar = Number(select_personagem.value);
+    var coisaFavoritaVar = input_coisa_favorita.value;
+    var perfeicaoVar = Number(select_perfeicao.value);
+    var verdadeiraVar = Number(select_verdadeira.value);
+    var fkUsuario = sessionStorage.ID_USUARIO;
+
+    // Verificando se há algum campo em branco
+    if (
+      nomeFazendaVar == "" ||
+      fazendaFavoritaVar == "#" ||
+      animalVar == "#" ||
+      personagemVar == "#" ||
+      coisaFavoritaVar == "" ||
+      perfeicaoVar == "#" ||
+      verdadeiraVar == "#"
+    ) {
+      mensagem_erro.innerHTML =
+        "Preencha todos os campos!";
+
+      //finalizarAguardar();
+      return false;
+    } else if(fkUsuario == ""){
+      console.log('ID do USUÁRIO NÃO ENCONTRADO!');
+   } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrarDois", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        fkUsuarioServer: fkUsuario,
+        fazendaServer: nomeFazendaVar,
+        fazendaFavoritaServer: fazendaFavoritaVar,
+        animalServer: animalVar,
+        personagemServer: personagemVar,
+        coisaFavoritaServer: coisaFavoritaVar,
+        perfeicaoServer: perfeicaoVar,
+        verdadeiraServer: verdadeiraVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso!";
+
+          mensagem_erro.style.color = 'green';
+
+          setTimeout(() => {
+            window.location = 'login/html'
+          }, "2000");
+
+          limparFormulario();
+          //finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  function sumirMensagem() {
+    mensagem_erro.style.display = 'none';
+  }
+
+</script>

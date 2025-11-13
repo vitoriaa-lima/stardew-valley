@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Press+Start+2P&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" href="./assets/icon/icone.svg">
+    <link rel="stylesheet" href="./css/estilo.css">
+    <title>Comunidade Junimo | Login</title>
+</head>
+
+<main class="main-login">
+    <div class="navbar">
+        <a href="./index.html">
+            <img src="./assets/img/topo.png" alt="topo Stardew Valley">
+        </a>
+
+        <div class="opcoes">
+            <a href="./index.html#sobre_jogo">SOBRE O JOGO</a>
+            <a href="./index.html#objetivos_sustentaveis">OBJETIVOS SUSTENTÁVEIS</a>
+            <a href="./login.html">LOGIN</a>
+        </div>
+    </div>
+
+    <div class="container-formulario">
+        <div class="formulario-titulo">
+            <div>
+                <img src="./assets/img/galinha.svg">
+                <h1>LOGIN</h1>
+            </div>
+            <p>Faça login e tenha acesso a informações únicas de<br>
+                jogadores como você ou mais experientes!</p>
+        </div>
+
+        <div class="formulario">
+            <div class="formulario-campos">
+                <div class="campo">
+                    <span>Email</span>
+                    <input id="input_email" placeholder="exemplo@gmail.com" type="text">
+                </div>
+
+                <div class="campo">
+                    <span>Senha</span>
+                    <input id="input_senha" placeholder="******" type="text">
+                </div>
+            </div>
+
+            <span id="mensagem_erro"></span>
+
+            <button onclick="entrar()">Entrar</button>
+            <span>Ainda não tem uma conta? <a href="./cadastro.html">Clique aqui</a>.</span>
+        </div>
+    </div>
+</main>
+
+</html>
+
+<script>
+
+
+    function entrar() {
+
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            mensagem_erro.innerHTML = "Credenciais inválidas!";
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    window.location = "./dashboard/mural.html";
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        mensagem_erro.style.display = "none";
+    }
+
+</script>

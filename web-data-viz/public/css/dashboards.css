@@ -1,0 +1,252 @@
+@font-face {
+  font-family: 'Stardew Valley';
+  src: url(../fonts/Stardew_Valley.otf);
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  font-family: "Inter", sans-serif;
+}
+
+
+/* Estilização Barra Lateral COMEÇA AQUI */
+.navbar-lateral {
+  display: flex;
+  flex-direction: column;
+  background-color: #CF963C;
+  color: #3E2429;
+  justify-content: space-between;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.lateral-saudacoes {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding: 30px;
+}
+
+.lateral-titulo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 150px;
+  padding-top: 15%;
+}
+
+.lateral-titulo #foto_usuario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  background-color: #3E2429;
+  color: #CF963C;
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+}
+
+.lateral-titulo p {
+  text-align: center;
+  font-size: 12px;
+}
+
+.lateral-titulo h2 {
+  font-size: 18px;
+}
+
+.lateral-opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lateral-opcoes .opcao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #3E2429;
+}
+
+
+.lateral-opcoes #selecionada {
+  text-decoration: underline;
+}
+
+.lateral-sair {
+  display: flex;
+  gap: 10px;
+  padding: 20px 28px;
+  border-top: 1px solid #3E2429;
+}
+
+.lateral-sair span {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #3E2429;
+}
+
+
+/* Estilização Barra de Navegação COMEÇA AQUI */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  box-shadow: 1px 2px 10px #0000002d;
+  width: 100%;
+}
+
+.navbar .opcoes {
+  display: flex;
+  gap: 40px;
+  font-family: "Inter", sans-serif;
+}
+
+/* Estilização Barra de Navegação ACABA AQUI */
+
+
+/* Estilização Mural COMEÇA AQUI */
+.container-seu-espaco,
+.container-dashboard,
+.container-comunidade {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.principal-seu-espaco {
+  display: flex;
+  flex-direction: row;
+  padding: 6% 12% 0 12%;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.descricao {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  gap: 10px;
+  width: 300px;
+  padding: 10px 0;
+}
+
+.imagem-favorita {
+  width: 200px;
+}
+
+#div_fazenda {
+  background-color: #E1633F;
+}
+
+#div_pet {
+  background-color: #63C6FD;
+}
+
+#div_personagem {
+  background-color: #8EDF42;
+}
+
+.favoritos {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.favorito {
+  display: flex;
+  gap: 10px;
+}
+
+#img-quiz {
+  width: 185px;
+}
+
+/* Estilização Mural ACABA AQUI */
+
+
+/* Estilização Dashboard COMEÇA AQUI */
+.principal-dashboard {
+  padding: 5%;
+}
+
+.metricas {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.metrica {
+  display: flex;
+  align-items: center;
+  gap: 10px
+}
+
+.metrica span {
+  display: flex;
+  background-color: #CF963C;
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.metrica span img {
+  width: 35px;
+}
+
+.metrica #favoritado {
+  width: 55px;
+}
+
+.metrica-titulo h1 {
+  font-size: 14px;
+}
+
+.metrica-titulo p {
+  font-size: 12px;
+}
+
+.graficos {
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+}
+
+
+.grupo-graficos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+/* Estilização Dashboard ACABA AQUI */
+
+
+/* Estilização Comunidade COMEÇA AQUI */
+.principal-comunidade {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Stardew Valley';
+}
+
+.principal-comunidade .formulario {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  background: url('../assets/img/fundo-formulario.png');
+}
