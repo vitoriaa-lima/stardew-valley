@@ -45,9 +45,11 @@ INSERT INTO personagem VALUES
 	(DEFAULT, 'Lewis', '7 de Primavera', 'M', 'Casa do Prefeito', 0, 'Pimenta', '../assets/img-caminho/lewis.png'),
 	(DEFAULT, 'Willy', '24 de Verão', 'M', 'Cabana de Pesca', 0, 'Peixe assado', '../assets/img-caminho/willy.png'),
 	(DEFAULT, 'Krobus', '1 de Inverno', 'M', 'Esgoto', 0, 'Diamante', '../assets/img-caminho/krobus.png'),
-	(DEFAULT, 'Sandy', '15 de Outono', 'F', 'Oásis (Deserto)', 0, 'Cristal de Fogo', '../assets/img-caminho/sandy.png'),
+	(DEFAULT, 'Sandy', '15 de Outono', 'F', 'Oásis no Deserto', 0, 'Cristal de Fogo', '../assets/img-caminho/sandy.png'),
 	(DEFAULT, 'Wizard', '17 de Inverno', 'M', 'Torre do Mago', 0, 'Essência Vazia', '../assets/img-caminho/wizard.png'),
 	(DEFAULT, 'Leo', '26 de Verão', 'M', 'Ilha Gengibre', 0, 'Manga', '../assets/img-caminho/leo.png');
+
+SELECT * FROM personagem;
 
 
 CREATE TABLE fazenda(
