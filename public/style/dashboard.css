@@ -1,9 +1,14 @@
+@font-face {
+    font-family: 'Stardew Valley';
+    src: url(../fonts/Stardew_Valley.otf);
+}
+
 * {
     margin: 0;
     box-sizing: border-box;
 }
 
-.main-seu-espaco, .main-dashboard {
+main {
     display: flex;
     flex-direction: row;
     font-family: "Inter", sans-serif;
@@ -105,7 +110,7 @@
 
 
 /* Estilização Mural COMEÇA AQUI */
-.container-seu-espaco, .container-dashboard{
+.container-seu-espaco, .container-dashboard, .container-comunidade{
      display: flex;
     flex-direction: column;
     width: 100%;
@@ -194,4 +199,32 @@
 }
 .metrica-titulo p{
     font-size: 12px;
+}
+.graficos{
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+}
+
+
+.grupo-graficos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+/* Estilização Dashboard ACABA AQUI */
+
+
+/* Estilização Comunidade COMEÇA AQUI */
+.principal-comunidade{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Stardew Valley';
+}
+.principal-comunidade .formulario{
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    background: url('../assets/img/fundo-formulario.png');
 }

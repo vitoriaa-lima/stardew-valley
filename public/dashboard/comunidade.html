@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,11 +12,10 @@
 
     <link rel="icon" href="../assets/icon/icone.svg">
     <link rel="stylesheet" href="../style/dashboard.css">
-    <title>Comunidade Junimo | Seu Espaço</title>
+    <title>Comunidade Junimo | Comunidade</title>
 </head>
-
-<body onload="validarSessao(), atualizarFeed()">
-    <main class="main-seu-espaco">
+<body>
+    <main class="main-comunidade">
         <div class="navbar-lateral">
             <div class="lateral-saudacoes">
                 <div class="lateral-titulo">
@@ -29,7 +27,7 @@
                 <div class="lateral-opcoes">
                     <div class="opcao">
                         <img src="../assets/img/regador.svg">
-                        <span id="selecionada">Seu Espaço</span>
+                        <span>Seu Espaço</span>
                     </div>
 
                     <div class="opcao">
@@ -39,18 +37,20 @@
 
                     <div class="opcao">
                         <img src="../assets/img/comunidade.svg">
-                        <span>Comunidade</span>
+                        <span  id="selecionada">Comunidade</span>
                     </div>
                 </div>
             </div>
 
-            <div onclick="limparSessao()" class="lateral-sair">
+            <div class="lateral-sair">
+                <a href="../index.html">
                     <img src="../assets/img/sair.svg" alt="Sair">
                     <span>Sair</span>
+                </a>
             </div>
         </div>
 
-        <div class="container-seu-espaco">
+        <div class="container-comunidade">
             <div class="navbar">
                 <a href="../index.html">
                     <img src="../assets/img/topo.png" alt="topo Stardew Valley">
@@ -69,48 +69,20 @@
                 </div>
             </div>
 
-            <div class="principal-seu-espaco">
-                <div class="favoritos">
-                    <div class="favorito fazenda-favorita">
-                        <div id="div_fazenda" class="imagem-favorita">
-                            <img src="">
-                        </div>
-                        <div class="descricao">
-                            <h4>Fazenda PixelFord!</h4>
-                            <p>A maior parte deste mapa é terra agrícola, ideal para cultivo e para criação de animais.</p>
-                            <p>Experimente cavar próximo a saída da sua fazenda, você pode ter uma surpresa!</p>
-                        </div>
-                    </div>
+            <div class="principal-comunidade">
+                <div class="formulario">
+                    <h1>Escreva uma dica ou easter egg sobre Stardew Valley!</h1>
 
-                    <div class="favorito pet-favorita">
-                        <div id="div_pet" class="imagem-favorita">
-                            <img src="">
-                        </div>
-                        <div class="descricao">
-                            <h4>O gato cinza</h4>
-                            <p>Sabia que você não precisa encher a vasilha do seu pet todo dia? Mas não deixe ele com sede!</p>
-                            <p>Chapéus podem ser colocados em cachorros ou gatos.</p>
-                        </div>
-                    </div>
+                    <h1>Titulo:</h1>
+                    <input type="text">
 
-                    <div class="favorito personagem-favorita">
-                        <div id="div_personagem" class="imagem-favorita">
-                            <img src="">
-                        </div>
-                        <div class="descricao">
-                            <h4>Leah</h4>
-                            <p>Leah faz aniversário dia 23 de Inverno. Experimente presentea-la com uma salada e veja a reação dela!</p>
-                            <p>Ela é um dos doze personagens disponíveis para casamento.</p>
-                        </div>
-                    </div>
+                    <h1>Mensagem:</h1>
+                    <textarea id=""></textarea>
+
+                    <button>Ok</button>
                 </div>
-
-                <a href="">
-                    <img id="img-quiz" src="../assets/img/quiz.png">
-                </a>
             </div>
         </div>
     </main>
 </body>
-
 </html>

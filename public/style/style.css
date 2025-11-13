@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -147,7 +148,7 @@ html {
     text-align: center;
 }
 
-.sobre-jogo img {
+#img_junimos {
     width: 80%;
 }
 
@@ -186,7 +187,7 @@ html {
     flex-direction: column;
     background-color: #F3B46C;
     border-radius: 5px;
-    width: 28%;
+    width: 32%;
     padding: 30px 40px 20px 40px;
     gap: 20px;
     color: #3E2429;
@@ -203,6 +204,10 @@ html {
     font-size: 14px;
     height: 35px;
     width: 100%;
+}
+
+.formulario input::placeholder{
+    color: #000;
 }
 
 .formulario select, input{
@@ -255,14 +260,23 @@ html {
 }
 
 #span_nome{
-    width: 20%;
+    width: 22%;
+}
+#span_personagem{
+    width: 28%;
 }
 #span_coisa{
-    width: 18%;
+    width: 20%;
 }
-#span_perfeicao, #span_personagem{
-    width: 25%;
+#span_perfeicao{
+    width: 26%;
 }
 #span_verdadeira{
-    width: 65%;
+    width: 72%;
+}
+#span_favorita{
+    width: 19%;
+}
+#span_animal{
+    width: 20%;
 }
