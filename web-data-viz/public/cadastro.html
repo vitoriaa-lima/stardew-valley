@@ -61,7 +61,7 @@
               <option value="F">Feminino</option>
               <option value="M">Masculino</option>
               <option value="O">Outros</option>
-              <option selected disabled value="#">Selecione</option>
+              <option selected disabled value="#">Selecione uma opção</option>
             </select>
           </div>
 
@@ -81,7 +81,7 @@
           </div>
         </div>
 
-        <span id="mensagem_erro"></span>
+        <span id="mensagem"></span>
         <button onclick="cadastrar()">Ir para a próxima etapa</button>
         <span>Já tem uma conta? <a href="./login.html">Clique aqui</a>.</span>
       </div>
@@ -96,13 +96,13 @@
           <div class="campo">
             <span id="span_favorita">Fazenda Favorita</span>
             <select id="select_fazenda">
-              <option value="">Padrão</option>
-              <option value="">Entre Riachos</option>
-              <option value="">Colina</option>
-              <option value="">Remota</option>
-              <option value="">Quatro Cantos</option>
-              <option value="">Praia</option>
-              <option value="">Prado</option>
+              <option value="1">Padrão</option>
+              <option value="2">Entre Riachos</option>
+              <option value="3">Colina</option>
+              <option value="4">Remota</option>
+              <option value="5">Quatro Cantos</option>
+              <option value="6">Praia</option>
+              <option value="7">Prado</option>
               <option selected disabled value="#">Selecione uma opção</option>
             </select>
           </div>
@@ -181,6 +181,7 @@
           </div>
         </div>
 
+        <span id="mensagem"></span>
         <button onclick="cadastrarParte2()">Criar</button>
         <span>Já tem uma conta? <a href="./login.html">Clique aqui</a>.</span>
       </div>
@@ -222,17 +223,19 @@
       dataNascimentoVar == "" ||
       confirmacaoSenhaVar == ""
     ) {
-      mensagem_erro.innerHTML =
+      mensagem.innerHTML =
         "Preencha todos os campos!";
 
-      finalizarAguardar();
+      // finalizarAguardar();
+
+      // se entrar aqui, nem termina de executar o restante da função, já retorna false
       return false;
     } else if (senhaVar != confirmacaoSenhaVar) {
-      mensagem_erro.innerHTML =
+      mensagem.innerHTML =
         "As senhas não são iguais!";
 
     } else {
-      setInterval(sumirMensagem, 5000);
+
     }
 
     // Enviando o valor da nova input
@@ -254,15 +257,21 @@
       .then(function (resposta) {
         console.log("resposta: ", resposta);
 
+
         if (resposta.ok) {
 
-          mensagem_erro.innerHTML =
-            "Primera parte realizada com sucesso...";
+
+          resposta.json().then(json => {
+            JSON.stringify(json)
+            console.log(json)
+            sessionStorage.ID_USARIO = json.id
+          })
+
+          div_formulario_parte1.style.display = 'none';
+          div_formulario_parte2.style.display = 'flex';
 
           setTimeout(() => {
-            mensagem_erro.style.color = 'green';
-            div_formulario_parte1.style.display = 'none';
-            div_formulario_parte2.style.display = 'flex';
+            console.log('teste')
           }, 100);
 
           //limparFormulario();
@@ -275,108 +284,58 @@
         console.log(`#ERRO: ${resposta}`);
         //finalizarAguardar();
       });
-      console.log('cad 1 completo')
+    console.log('cad 1 completo')
     return false;
   }
 
 
   function cadastrarParte2() {
+    var nomeFazenda = input_nome_fazenda.value;
+    var fazendaFavorita = Number(select_fazenda.value);
+    var animal = Number(select_animal.value);
+    var personagem = Number(select_personagem.value);
+    var coisaFavorita = input_coisa_favorita.value;
+    var perfeicao = Number(select_perfeicao.value);
+    var verdadeira = Number(select_verdadeira.value);
 
-    var nomeVar = input_nome.value;
-    var emailVar = input_email.value;
-    var senhaVar = senha_input.value;
-
-    fetch("/usuarios/autenticar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        emailServer: emailVar,
-        senhaServer: senhaVar
-      })
-    }).then(function (resposta) {
-      console.log("ESTOU NO THEN DO entrar()!")
-
-      if (resposta.ok) {
-        console.log(resposta);
-
-        resposta.json().then(json => {
-          console.log(json);
-          console.log(JSON.stringify(json));
-          sessionStorage.EMAIL_USUARIO = json.email;
-          sessionStorage.NOME_USUARIO = json.nome;
-          sessionStorage.ID_USUARIO = json.id;
-
-          window.location = "./dashboard/mural.html";
-
-        });
-
-      } else {
-
-        console.log("Houve um erro ao tentar realizar o login!");
-
-        resposta.text().then(texto => {
-          console.error(texto);
-        });
-      }
-
-    }).catch(function (erro) {
-      console.log(erro);
-    })
-
-
-    // aguardar();
-
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var nomeFazendaVar = input_nome_fazenda.value;
-    var fazendaFavoritaVar = Number(select_fazenda.value);
-    var animalVar = Number(select_animal.value);
-    var personagemVar = Number(select_personagem.value);
-    var coisaFavoritaVar = input_coisa_favorita.value;
-    var perfeicaoVar = Number(select_perfeicao.value);
-    var verdadeiraVar = Number(select_verdadeira.value);
-    var fkUsuario = sessionStorage.ID_USUARIO;
-
-    // Verificando se há algum campo em branco
-    if (
-      nomeFazendaVar == "" ||
-      fazendaFavoritaVar == "#" ||
-      animalVar == "#" ||
-      personagemVar == "#" ||
-      coisaFavoritaVar == "" ||
-      perfeicaoVar == "#" ||
-      verdadeiraVar == "#"
+    if (nomeFazenda == "" ||
+      isNaN(fazendaFavorita) ||
+      isNaN(animal) ||
+      isNaN(personagem) ||
+      coisaFavorita == "" ||
+      isNaN(perfeicao) ||
+      isNaN(verdadeira)
     ) {
-      mensagem_erro.innerHTML =
+
+      mensagem.innerHTML =
         "Preencha todos os campos!";
 
       //finalizarAguardar();
+
+      //se entrar aqui, nem termina de executar o restante da função, já retorna false
       return false;
-    } else if(fkUsuario == ""){
-      console.log('ID do USUÁRIO NÃO ENCONTRADO!');
-   } else {
-      setInterval(sumirMensagem, 5000);
+
+    } else {
+
     }
 
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrarDois", {
+    fetch("/fazenda/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        fkUsuarioServer: fkUsuario,
-        fazendaServer: nomeFazendaVar,
-        fazendaFavoritaServer: fazendaFavoritaVar,
-        animalServer: animalVar,
-        personagemServer: personagemVar,
-        coisaFavoritaServer: coisaFavoritaVar,
-        perfeicaoServer: perfeicaoVar,
-        verdadeiraServer: verdadeiraVar
+        //crie um atributo que recebe o valor recuperado aqui
+        //Agora vá para o arquivo routes/usuario.js
+
+        hkUsuario: sessionStorage.ID_USARIO,
+        fazendaServer: nomeFazenda,
+        fazendaFavoritaServer: fazendaFavorita,
+        animalServer: animal,
+        personagemServer: personagem,
+        coisaFavoritaServer: coisaFavorita,
+        perfeicaoServer: perfeicao,
+        verdadeiraServer: verdadeira
       }),
     })
       .then(function (resposta) {
@@ -384,16 +343,9 @@
 
         if (resposta.ok) {
 
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso!";
+          window.location = "logint.html";
 
-          mensagem_erro.style.color = 'green';
-
-          setTimeout(() => {
-            window.location = 'login/html'
-          }, "2000");
-
-          limparFormulario();
+          //limparFormulario();
           //finalizarAguardar();
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
@@ -401,14 +353,11 @@
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
+        //finalizarAguardar();
       });
-
+    console.log('cad 2 completo')
     return false;
-  }
 
-  function sumirMensagem() {
-    mensagem_erro.style.display = 'none';
   }
 
 </script>

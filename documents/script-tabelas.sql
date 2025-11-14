@@ -136,6 +136,8 @@ senha VARCHAR(255) NOT NULL,
 pontuacao_quiz INT
 );
 
+TRUNCATE TABLE usuario;
+
 create table fazenda_usuario(
 id INT,
 fk_usuario INT UNIQUE,
@@ -154,3 +156,6 @@ verdadeira_perfeicao TINYINT,
 CONSTRAINT chk_verdadeira_perfeicao CHECK(verdadeira_perfeicao IN(0, 1)),
 PRIMARY KEY (id, fk_usuario)
 );
+
+SELECT * FROM usuario;
+SELECT * FROM fazenda_usuario;

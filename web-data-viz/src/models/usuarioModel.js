@@ -22,20 +22,7 @@ function cadastrar(nome, email, genero, dt_nascimento, senha) {
     return database.executar(instrucaoSql);
 }
 
-function cadastrarDois(fkUsuario, nomeFazenda, fazenda, animal, personagem, coisaFavorita, perfeicao, verdadeira) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarDois():", fkUsuario, nomeFazenda, fazenda, animal, personagem, coisaFavorita, perfeicao, verdadeira);
-    
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
-    var instrucaoSql = `
-        INSERT INTO fazenda_usuario(fk_usuario, nome_fazenda, fk_fazenda_favorita, fk_pet_favorito, fk_personagem_favorito, coisa_favorita, perfeicao, verdadeira_perfeicao) VALUES ('${fkUsuario}' ,'${nomeFazenda}', '${fazenda}', '${animal}', '${personagem}', '${coisaFavorita}', '${perfeicao}', '${verdadeira}');
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
-
 module.exports = {
     autenticar,
-    cadastrar,
-    cadastrarDois
+    cadastrar
 };
