@@ -19,6 +19,15 @@
 </head>
 
 <body onload="validarSessao(), carregarDados()">
+
+<div class="construcao-pai">
+    <div id="alerta_construcao" class="construcao">
+        <h1>Robin está trabalhando!</h1>
+        <img src="../assets/img/robin_construcao.png">
+        <p>Esse espaço está em<br>construção. Volte depois!</p>
+    </div>
+</div>
+
     <main class="main-seu-espaco">
         <div class="navbar-lateral">
             <div class="lateral-saudacoes">
@@ -39,7 +48,7 @@
                         <span>Dashboard</span>
                     </a>
 
-                    <a href="./comunidade.html" class="opcao">
+                    <a onclick="mostrarAlerta()" class="opcao">
                         <img src="../assets/img/comunidade.svg">
                         <span>Comunidade</span>
                     </a>
@@ -65,7 +74,7 @@
                     <a href="./dashboard.html">
                         <img src="../assets/img/dashboard-topo.png">
                     </a>
-                    <a href="./comunidade.html">
+                    <a onclick="mostrarAlerta()">
                         <img src="../assets/img/comunidade-topo.png">
                     </a>
                 </div>
@@ -107,7 +116,7 @@
                     </div>
                 </div>
 
-                <a href="">
+                <a onclick="mostrarAlerta()">
                     <img id="img-quiz" src="../assets/img/quiz.png">
                 </a>
             </div>
@@ -184,5 +193,13 @@
             console.error(resposta);
             alert('Erro')
         })
+    }
+
+    function mostrarAlerta(){
+        alerta_construcao.style.opacity = "1";
+
+        setTimeout(() => {
+            alerta_construcao.style.opacity = "0";
+        }, 3000);
     }
 </script>

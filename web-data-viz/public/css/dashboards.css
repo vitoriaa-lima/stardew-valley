@@ -154,7 +154,8 @@ main {
   justify-content: center;
   background-color: #E1633F;
 }
-#div_fazenda img{
+
+#div_fazenda img {
   width: 110px;
 }
 
@@ -164,7 +165,8 @@ main {
   justify-content: center;
   background-color: #63C6FD;
 }
-#div_pet img{
+
+#div_pet img {
   width: 90px;
 }
 
@@ -174,7 +176,8 @@ main {
   align-items: flex-end;
   background-color: #8EDF42;
 }
-#div_personagem img{
+
+#div_personagem img {
   width: 200px;
   height: 120px;
 }
@@ -253,7 +256,7 @@ main {
   justify-content: space-evenly;
 }
 
-.grafico-um{
+.grafico-um {
   height: 200px;
 }
 
@@ -273,4 +276,45 @@ main {
   flex-direction: column;
   padding: 50px;
   background: url('../assets/img/fundo-formulario.png');
+}
+
+/* Estilização Comunidade ACABA AQUI */
+
+/* Estilização Construção COMEÇA AQUI */
+.construcao {
+  position: fixed;
+  background-color: #ffffff;
+  font-family: "Inter", sans-serif;
+  border: 2px solid #00000021;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  font-weight: bold;
+  color: #3E2429;
+  box-shadow: -2px 2px 8px #00000030;
+  margin-top: 8%;
+  margin-right: 20px;
+  flex-direction: column;
+  justify-content: center;
+
+  /* visibilidade da div */
+  opacity: 0;
+}
+.construcao h1{
+  font-size: 16px;
+}
+.construcao img{
+  width: 90px;
+}
+.construcao p{
+  font-size: 12px;
+  font-weight: normal;
+  text-align: center;
+}
+
+.construcao-pai{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
 }
