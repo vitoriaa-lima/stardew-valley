@@ -1,6 +1,7 @@
 CREATE DATABASE stardew_valley;
 USE stardew_valley;
 
+
 -- Criação das Tabelas
 CREATE TABLE personagem(
 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -66,12 +67,12 @@ INSERT INTO fazenda (tipo, descricao, dica, caminho_img) VALUES
 	 'Ideal para iniciantes focados em agricultura.', 
 	 '../assets/img-fazenda/padrao.png'),
 
-	('Fazenda do Rio', 
+	('Fazenda Entre Riachos', 
 	 'Grande área de pesca com pouca terra para cultivo.', 
 	 'Ótima para quem quer lucrar pescando.', 
 	 '../assets/img-fazenda/rio.png'),
 
-	('Fazenda Florestal', 
+	('Fazenda na Floresta', 
 	 'Menos espaço agrícola, mas com troncos e forragem renováveis.', 
 	 'Boa para forrageamento e madeira.', 
 	 '../assets/img-fazenda/floresta.png'),
@@ -81,12 +82,12 @@ INSERT INTO fazenda (tipo, descricao, dica, caminho_img) VALUES
 	 'Perfeita para quem gosta de mineração.', 
 	 '../assets/img-fazenda/colina.png'),
 
-	('Fazenda Selvagem', 
+	('Fazenda Remota', 
 	 'Terreno amplo, mas monstros aparecem à noite.', 
 	 'Desafiadora — ideal para combate.', 
 	 '../assets/img-fazenda/selvagem.png'),
 
-	('Fazenda dos Quatro Cantos', 
+	('Fazenda Quatro Cantos', 
 	 'Dividida em quatro áreas com características de outras fazendas.', 
 	 'Excelente para jogo em grupo ou versatilidade.', 
 	 '../assets/img-fazenda/quatro_cantos.png'),
@@ -96,15 +97,10 @@ INSERT INTO fazenda (tipo, descricao, dica, caminho_img) VALUES
 	 'Boa para desafio e estética.', 
 	 '../assets/img-fazenda/praia.png'),
 
-	('Fazenda da Colina do Prado', 
+	('Fazenda do Prado', 
 	 'Paisagem calma com abelhas e flores especiais.', 
 	 'Focada em mel, flores e relaxamento.', 
-	 '../assets/img-fazenda/prado.png'),
-
-	('Fazenda da Montanha', 
-	 'Terreno frio com lago congelado no inverno.', 
-	 'Melhor para quem adora pescar e minerar.', 
-	 '../assets/img-fazenda/montanha.png');
+	 '../assets/img-fazenda/prado.png');
 
 
 CREATE TABLE pet(
@@ -139,7 +135,7 @@ pontuacao_quiz INT
 TRUNCATE TABLE usuario;
 
 create table fazenda_usuario(
-id INT,
+id INT AUTO_INCREMENT,
 fk_usuario INT UNIQUE,
 FOREIGN KEY (fk_usuario) REFERENCES usuario(id),
 nome_fazenda VARCHAR(100),
@@ -156,6 +152,11 @@ verdadeira_perfeicao TINYINT,
 CONSTRAINT chk_verdadeira_perfeicao CHECK(verdadeira_perfeicao IN(0, 1)),
 PRIMARY KEY (id, fk_usuario)
 );
+DROP TABLE fazenda_usuario;
+TRUNCATE TABLE usuario;
 
 SELECT * FROM usuario;
 SELECT * FROM fazenda_usuario;
+SELECT * FROM fazenda;
+SELECT * FROM personagem;
+SELECT * FROM pet;

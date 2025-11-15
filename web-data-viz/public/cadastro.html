@@ -264,7 +264,7 @@
           resposta.json().then(json => {
             JSON.stringify(json)
             console.log(json)
-            sessionStorage.ID_USARIO = json.id
+            sessionStorage.ID_USUARIO = json.id
           })
 
           div_formulario_parte1.style.display = 'none';
@@ -297,6 +297,7 @@
     var coisaFavorita = input_coisa_favorita.value;
     var perfeicao = Number(select_perfeicao.value);
     var verdadeira = Number(select_verdadeira.value);
+    var fkUsuario = Number(sessionStorage.ID_USUARIO);
 
     if (nomeFazenda == "" ||
       isNaN(fazendaFavorita) ||
@@ -328,7 +329,7 @@
         //crie um atributo que recebe o valor recuperado aqui
         //Agora vá para o arquivo routes/usuario.js
 
-        hkUsuario: sessionStorage.ID_USARIO,
+        fkUsuario: fkUsuario,
         fazendaServer: nomeFazenda,
         fazendaFavoritaServer: fazendaFavorita,
         animalServer: animal,
@@ -343,7 +344,7 @@
 
         if (resposta.ok) {
 
-          window.location = "logint.html";
+          window.location = "login.html";
 
           //limparFormulario();
           //finalizarAguardar();

@@ -149,15 +149,34 @@ main {
 }
 
 #div_fazenda {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #E1633F;
+}
+#div_fazenda img{
+  width: 110px;
 }
 
 #div_pet {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   background-color: #63C6FD;
 }
+#div_pet img{
+  width: 90px;
+}
+
 
 #div_personagem {
+  display: flex;
+  align-items: flex-end;
   background-color: #8EDF42;
+}
+#div_personagem img{
+  width: 200px;
+  height: 120px;
 }
 
 .favoritos {

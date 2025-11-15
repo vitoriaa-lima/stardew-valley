@@ -21,23 +21,31 @@ function cadastrar(req, res) {
     } else if (coisaFavorita == undefined) {
         res.status(400).send("Sua coisa favorita está undefined!");
     } else if (perfeicao == undefined) {
-        res.status(400).send("Sua perfeição esrá undefined!");
+        res.status(400).send("Sua perfeição está undefined!");
     } else if (verdadeira == undefined) {
-        res.status(400).send("Sua verdadeira perfeição esrá undefined!");
+        res.status(400).send("Sua verdadeira perfeição está undefined!");
     } else if (fkUsuario == undefined) {
-        res.status(400).send("Sua verdadeira perfeição esrá undefined!");
+        res.status(400).send("Seu id usuário está undefined!");
     } else {
 
-        fazendaModel.cadastrar(fkUsuario, nomeFazenda, fazendaFavorita, animal, personagem, coisaFavorita, perfeicao, verdadeira).then(function(resposta){
-            res.status(200).send("Fazenda Usuário cadastrada com sucesso");
-        }).cath(function(erro){
-            res.status(500).json(erro.sqlMessage);
-        })
+        fazendaModel.cadastrar(fkUsuario, nomeFazenda, fazendaFavorita, animal, personagem, coisaFavorita, perfeicao, verdadeira).then(
+                function (resultado) {
+                    // res.json(resultado);
+                    res.json({
+                        id: resultado.insertId
+                    })
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
     }
-
-
-
-
 
 }
 

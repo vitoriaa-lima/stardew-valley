@@ -91,9 +91,25 @@ function cadastrar(req, res) {
     }
 }
 
+function buscarDados(req, res) {
+     var id = req.params.idUsuario;
 
+    usuarioModel.buscarDados(id)
+        .then(function(resultado) {
+            if (resultado.length > 0) {
+                res.json(resultado[0]);
+            } else {
+                res.status(404).send(`Usuário ${id} não encontrado.`);
+            }
+        })
+        .catch(function(erro) {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    buscarDados
 }
