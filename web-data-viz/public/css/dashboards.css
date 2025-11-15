@@ -243,6 +243,7 @@ main {
   display: flex;
   flex-direction: column;
   padding: 5%;
+  gap: 30px;
 }
 
 
@@ -250,6 +251,10 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+.grafico-um{
+  height: 200px;
 }
 
 /* Estilização Dashboard ACABA AQUI */

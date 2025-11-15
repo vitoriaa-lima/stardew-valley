@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="../js/sessao.js"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Press+Start+2P&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" href="../assets/icon/icone.svg">
+    <link rel="stylesheet" href="../css/dashboards.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Comunidade Junimo | Dashboard</title>
+</head>
+
+<body onload="validarSessao()">
+    <main class="main-dashboard">
+        <div class="navbar-lateral">
+            <div class="lateral-saudacoes">
+                <div class="lateral-titulo">
+                    <span id="foto_usuario"></span>
+                    <h2>Olá, <span id="b_usuario">usuário</span>!</h2>
+                    <p>Sua mente está cheia de pensamentos sobre <span id="coisa_usuario"></span>.</p>
+                </div>
+
+                <div class="lateral-opcoes">
+                    <a href="./mural.html" class="opcao">
+                        <img src="../assets/img/regador.svg">
+                        <span>Seu Espaço</span>
+                    </a>
+
+                    <a href="./dashboard.html" class="opcao">
+                        <img src="../assets/img/dashboard.svg">
+                        <span id="selecionada">Dashboard</span>
+                    </a>
+
+                    <a href="./comunidade.html" class="opcao">
+                        <img src="../assets/img/comunidade.svg">
+                        <span>Comunidade</span>
+                    </a>
+                </div>
+            </div>
+
+            <div onclick="limparSessao()" class="lateral-sair">
+                <img src="../assets/img/sair.svg" alt="Sair">
+                <span>Sair</span>
+            </div>
+        </div>
+
+        <div class="container-dashboard">
+            <div class="navbar">
+                <a href="../index.html">
+                    <img src="../assets/img/topo.png" alt="topo Stardew Valley">
+                </a>
+
+                <div class="opcoes">
+                    <a href="./mural.html">
+                        <img src="../assets/img/espaco-topo.png">
+                    </a>
+                    <a href="./dashboard.html">
+                        <img src="../assets/img/dashboard-topo.png">
+                    </a>
+                    <a href="./comunidade.html">
+                        <img src="../assets/img/comunidade-topo.png">
+                    </a>
+                </div>
+            </div>
+
+            <div class="principal-dashboard">
+                <div class="metricas">
+                    <div class="metrica">
+                        <span>
+                            <img src="../assets/img/idade.svg">
+                        </span>
+                        <div class="metrica-titulo">
+                            <h1 id="idade_media">20 anos</h1>
+                            <p>Idade média dos jogadores</p>
+                        </div>
+                    </div>
+
+                    <div class="metrica">
+                        <span>
+                            <img id="favoritado" src="../assets/img/robin.png" alt="">
+                        </span>
+                        <div class="metrica-titulo">
+                            <h1 id="personagem_favoritado">Robin</h1>
+                            <p>Personagem mais favoritado</p>
+                        </div>
+                    </div>
+
+                    <div class="metrica">
+                        <span>
+                            <img src="../assets/img/trofeu.svg">
+                        </span>
+                        <div class="metrica-titulo">
+                            <h1 id="porcentagem_perfeicao">45%</h1>
+                            <p>Alcançaram a perfeição</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="graficos">
+                    <div class="grupo-graficos">
+                        <div class="grafico-um">
+                            <h4>Gênero em Relação ao Total de Jogadores</h4>
+                            <canvas id="grafico_genero"></canvas>
+                        </div>
+
+                        <div class="grafico-dois">
+                            <h4>Tipo de Fazenda em Relação ao Total de Jogadores</h4>
+                            <canvas id="grafico_fazenda_tipo"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="grupo-graficos">
+                        <div class="grafico-tres">
+                            <h4>Perfeição e Verdadeira Perfeição</h4>
+                            <canvas id="grafico_perfeicao"></canvas>
+                        </div>
+
+                        <div class="grafico-quatro">
+                            <h4>Tipo de Pet em Relação ao Total de Jogadores</h4>
+                            <canvas id="grafico_pet"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+<script>
+
+    const graficoGenero = document.getElementById('grafico_genero');
+
+    new Chart(graficoGenero, {
+        type: 'pie',
+        data: {
+            labels: ['Feminino', 'Masculino', 'Outros'],
+            datasets: [{
+                label: '',
+                data: [12, 19, 3],
+                borderWidth: 1
+            }]
+        }
+    });
+
+    const graficoFazenda = document.getElementById('grafico_fazenda_tipo');
+
+    new Chart(graficoFazenda, {
+        type: 'bar',
+        data: {
+            labels: ['Padrão', 'Entre Riachos', 'Colina', 'Remota', 'Qautro Cantos', 'Praia', 'Prado'],
+            datasets: [{
+                label: '',
+                data: [12, 19, 3, 1, 2, 5, 1],
+                backgroundColor: ['#003400', '#006414', '#009929', '#5ccb5f', '#98ff96',],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const graficoPet = document.getElementById('grafico_pet');
+
+    new Chart(graficoPet, {
+        type: 'bar',
+        data: {
+            labels: ['Gato', 'Cachorro', 'Tartaruga', 'Passarinho'],
+            datasets: [{
+                label: '',
+                data: [12, 19, 3, 1],
+                backgroundColor: ['#006414', '#009929', '#5ccb5f', '#98ff96'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            scales: {
+                x: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const graficoPerfeicao = document.getElementById('grafico_perfeicao');
+
+    new Chart(graficoPerfeicao, {
+        type: 'bar',
+        data: {
+            labels: ['Perfeição', 'Verdadeira Perfeição'],
+            datasets: [{
+                label: 'Não Alcançou',
+                data: [12, 19],
+                backgroundColor: '#008489',
+                borderWidth: 1
+            },
+
+            {
+                label: 'Alcançou',
+                data: [3, 1],
+                backgroundColor: '#93C2C4',
+                borderWidth: 1
+            }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+</script>
+
+</html>
