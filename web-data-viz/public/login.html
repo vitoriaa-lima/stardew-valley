@@ -18,50 +18,56 @@
     <link rel="stylesheet" href="./css/estilo.css">
     <title>Comunidade Junimo | Login</title>
 </head>
-
-<main class="main-login">
-    <div class="navbar">
-        <a href="./index.html">
-            <img src="./assets/img/topo.png" alt="topo Stardew Valley">
-        </a>
-
-        <div class="opcoes">
-            <a href="./index.html#sobre_jogo">SOBRE O JOGO</a>
-            <a href="./index.html#objetivos_sustentaveis">OBJETIVOS SUSTENTÁVEIS</a>
-            <a href="./login.html">LOGIN</a>
-        </div>
+<div class="alerta-pai">
+    <div id="alerta_erro" class="alerta-erro">
+        <img src="./assets/img/alerta.svg">
+        <span id="span_alerta">Credenciais inválidas!<br> Tente novamente.</span>
     </div>
+</div>
 
-    <div class="container-formulario">
-        <div class="formulario-titulo">
-            <div>
-                <img src="./assets/img/galinha.svg">
-                <h1>LOGIN</h1>
+<dody>
+    <main class="main-login">
+        <div class="navbar">
+            <a href="./index.html">
+                <img src="./assets/img/topo.png" alt="topo Stardew Valley">
+            </a>
+
+            <div class="opcoes">
+                <a href="./index.html#sobre_jogo">SOBRE O JOGO</a>
+                <a href="./index.html#objetivos_sustentaveis">OBJETIVOS SUSTENTÁVEIS</a>
+                <a href="./login.html">LOGIN</a>
             </div>
-            <p>Faça login e tenha acesso a informações únicas de<br>
-                jogadores como você ou mais experientes!</p>
         </div>
 
-        <div class="formulario">
-            <div class="formulario-campos">
-                <div class="campo">
-                    <span>Email</span>
-                    <input id="input_email" placeholder="exemplo@gmail.com" type="text">
+        <div class="container-formulario">
+            <div class="formulario-titulo">
+                <div>
+                    <img src="./assets/img/galinha.svg">
+                    <h1>LOGIN</h1>
                 </div>
-
-                <div class="campo">
-                    <span>Senha</span>
-                    <input id="input_senha" placeholder="******" type="text">
-                </div>
+                <p>Faça login e tenha acesso a informações únicas de<br>
+                    jogadores como você ou mais experientes!</p>
             </div>
 
-            <span id="mensagem_erro"></span>
+            <div class="formulario">
+                <div class="formulario-campos">
+                    <div class="campo">
+                        <span>Email</span>
+                        <input id="input_email" placeholder="exemplo@gmail.com" type="text">
+                    </div>
 
-            <button onclick="entrar()">Entrar</button>
-            <span>Ainda não tem uma conta? <a href="./cadastro.html">Clique aqui</a>.</span>
+                    <div class="campo">
+                        <span>Senha</span>
+                        <input id="input_senha" placeholder="******" type="text">
+                    </div>
+                </div>
+
+                <button onclick="entrar()">Entrar</button>
+                <span>Ainda não tem uma conta? <a href="./cadastro.html">Clique aqui</a>.</span>
+            </div>
         </div>
-    </div>
-</main>
+    </main>
+</dody>
 
 </html>
 
@@ -74,11 +80,8 @@
         var senhaVar = input_senha.value;
 
         if (emailVar == "" || senhaVar == "") {
-            mensagem_erro.innerHTML = "Credenciais inválidas!";
+            mostrarErro();
             return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -114,6 +117,8 @@
 
                 console.log("Houve um erro ao tentar realizar o login!");
 
+                mostrarErro();
+
                 resposta.text().then(texto => {
                     console.error(texto);
                 });
@@ -126,8 +131,13 @@
         return false;
     }
 
-    function sumirMensagem() {
-        mensagem_erro.style.display = "none";
+
+    function mostrarErro() {
+        alerta_erro.style.opacity = "1";
+
+        setTimeout(() => {
+            alerta_erro.style.opacity = "0";
+        }, 3000);
     }
 
 </script>

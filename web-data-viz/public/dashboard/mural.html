@@ -77,10 +77,9 @@
                         <div id="div_fazenda" class="imagem-favorita">
                             <img id="img_fazenda" src="">
                         </div>
-                        <div class="descricao">
-                            <h4>Fazenda <span id="nome_fazenda">Nome da Fazenda</span>!</h4>
-                            <p>A maior parte deste mapa é terra agrícola, ideal para cultivo e para criação de animais.
-                            </p>
+                        <div id="div_descricao_fazenda" class="descricao">
+                            <h4>Fazenda Nome!</h4>
+                            <p>A maior parte deste mapa é terra agrícola, ideal para cultivo e para criação de animais.</p>
                             <p>Experimente cavar próximo a saída da sua fazenda, você pode ter uma surpresa!</p>
                         </div>
                     </div>
@@ -89,10 +88,9 @@
                         <div id="div_pet" class="imagem-favorita">
                             <img id="img_pet" src="">
                         </div>
-                        <div class="descricao">
-                            <h4>O <span id="nome_pet">Nome do pet</span></h4>
-                            <p>Sabia que você não precisa encher a vasilha do seu pet todo dia? Mas não deixe ele com
-                                sede!</p>
+                        <div id="div_descricao_pet" class="descricao">
+                            <h4>O Cachorro Marrom</h4>
+                            <p>Sabia que você não precisa encher a vasilha do seu pet todo dia? Mas não deixe ele com sede!</p>
                             <p>Chapéus podem ser colocados em cachorros ou gatos.</p>
                         </div>
                     </div>
@@ -101,9 +99,9 @@
                         <div id="div_personagem" class="imagem-favorita">
                             <img id="img_personagem" src="">
                         </div>
-                        <div class="descricao">
-                            <h4 id="nome_personagem">Nome do personagem</h4>
-                            <p><span id="nome_personagem_desc">Nome do personagem</span> faz aniversário dia <span id="span_aniversario">Aniversãrio</span>. Experimente presentea-la com <span id="span_presente">presente</span> e veja a reação dela!</p>
+                        <div id="div_descricao_personagem" class="descricao">
+                            <h4>Robin</h4>
+                            <p>Robin faz aniversário dia Aniversãrio. Experimente presentea-la com presente e veja a reação dela!</p>
                             <p>Ela é um dos doze personagens disponíveis para casamento.</p>
                         </div>
                     </div>
@@ -122,33 +120,67 @@
 <script>
     coisa_usuario.innerHTML = sessionStorage.COISA_USUARIO;
 
-    function carregarDados(){
+    function carregarDados() {
         var idUsuario = Number(sessionStorage.ID_USUARIO);
 
-        fetch(`/usuarios/dados/${idUsuario}`).then(function(resposta){
-            if(resposta.ok){
+        fetch(`/usuarios/dados/${idUsuario}`).then(function (resposta) {
+            if (resposta.ok) {
 
-                resposta.json().then(function(resposta){
+                resposta.json().then(function (resposta) {
                     sessionStorage.COISA_USUARIO = resposta.coisaFavorita;
-                    
-                    nome_fazenda.innerHTML = resposta.nomeFazenda;
-                    img_fazenda.src = resposta.imgFazenda;
-                    
 
-                    nome_pet.innerHTML = resposta.nomePet;
+                    img_fazenda.src = resposta.imgFazenda;
+
+                    div_descricao_fazenda.innerHTML = `
+                        <h4>Fazenda ${resposta.nomeFazenda}!</h4>
+                        <p>${resposta.descricao}</p>
+                        <p>${resposta.dica}</p>
+                    `;
+
+
                     img_pet.src = resposta.imgPet;
 
-                    nome_personagem.innerHTML = resposta.nomePersonagem;
-                    nome_personagem_desc.innerHTML = resposta.nomePersonagem;
-                    span_aniversario.innerHTML =  resposta.aniversario;
-                    span_presente.innerHTML = resposta.presenteFavorito;
+                    if (resposta.nomePet == 'Tartaruga') {
+                        div_descricao_pet.innerHTML = `
+                            <h4>A ${resposta.nomePet}!</h4>
+                            <p>Sabia que você não precisa encher a vasilha do seu pet todo dia? Mas não deixe ele com sede!</p>
+                            <p>Podem ser compradas no Rancho da Marnie. Chápeus não podem ser colocados nelas!</p>
+                        `;
+
+                    } else {
+                        div_descricao_pet.innerHTML = `
+                            <h4>O ${resposta.nomePet}!</h4>
+                            <p>Sabia que você não precisa encher a vasilha do seu pet todo dia? Mas não deixe ele com sede!</p>
+                            <p>Chapéus podem ser colocados em cachorros ou gatos.</p>
+                        `;
+                    }
+
                     img_personagem.src = resposta.imgPersonagem;
+
+                    if (resposta.genero == 'F') {
+                        div_descricao_personagem.innerHTML = `
+                        <h4>${resposta.nomePersonagem}</h4>
+                        <p>${resposta.nomePersonagem} faz aniversário dia ${resposta.aniversario}. Experimente presentea-la com ${resposta.presenteFavorito} e veja a reação dela!</p>
+                    `;
+                    } else {
+                        div_descricao_personagem.innerHTML = `
+                        <h4>${resposta.nomePersonagem}</h4>
+                        <p>${resposta.nomePersonagem} faz aniversário dia ${resposta.aniversario}. Experimente presentea-lo com ${resposta.presenteFavorito} e veja a reação dele!</p>
+                    `;
+                    }
+
+                    if (resposta.casavel == 1) {
+                        div_descricao_personagem.innerHTML += `<p>Esse é um dos doze personagens disponíveis para casamento.</p>`;
+                    } else {
+                        div_descricao_personagem.innerHTML += `<p>Não queira casar com esse personagem! Não é disponível para casamento.</p>`;
+                    }
+
                 })
 
-            } else{
+            } else {
                 throw ('Houve um erro na API!');
             }
-        }).catch(function(resposta){
+        }).catch(function (resposta) {
             console.error(resposta);
             alert('Erro')
         })

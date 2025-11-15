@@ -20,6 +20,13 @@
 </head>
 
 <body>
+<div class="alerta-pai">
+    <div id="alerta_erro" class="alerta-erro">
+        <img src="./assets/img/alerta.svg">
+        <span id="span_alerta">Credenciais inválidas!<br> Tente novamente.</span>
+    </div>
+</div>
+
   <main class="main-cadastro">
     <div class="navbar">
       <a href="./index.html">
@@ -67,7 +74,7 @@
 
           <div class="campo">
             <span>Data de Nascimento</span>
-            <input id="input_data_nascimento" type="date">
+            <input maxlength="8" id="input_data_nascimento" type="date">
           </div>
 
           <div class="campo">
@@ -81,7 +88,6 @@
           </div>
         </div>
 
-        <span id="mensagem"></span>
         <button onclick="cadastrar()">Ir para a próxima etapa</button>
         <span>Já tem uma conta? <a href="./login.html">Clique aqui</a>.</span>
       </div>
@@ -110,9 +116,14 @@
           <div class="campo">
             <span id="span_animal">Animal Favorito</span>
             <select id="select_animal">
-              <option value="1">Cachorro</option>
-              <option value="4">Gato</option>
-              <option value="7">Tartaruga</option>
+              <option value="1">Cachorro Marrom</option>
+              <option value="2">Cachorro Dourado</option>
+              <option value="3">Cachorro Preto</option>
+              <option value="4">Gato Cinza</option>
+              <option value="5">Gato Laranja</option>
+              <option value="6">Gato Branco</option>
+              <option value="7">Gato Dourado</option>
+              <option value="8">Tartaruga</option>
               <option selected disabled value="#">Selecione uma opção</option>
             </select>
           </div>
@@ -151,6 +162,9 @@
               <option value="29">Sandy</option>
               <option value="30">Wizard</option>
               <option value="31">Leo</option>
+              <option value="32">Anão</option>
+              <option value="33">Vincent</option>
+              <option value="34">Jas</option>
               <option selected disabled value="#">Selecione uma opção</option>
             </select>
           </div>
@@ -181,7 +195,6 @@
           </div>
         </div>
 
-        <span id="mensagem"></span>
         <button onclick="cadastrarParte2()">Criar</button>
         <span>Já tem uma conta? <a href="./login.html">Clique aqui</a>.</span>
       </div>
@@ -223,18 +236,25 @@
       dataNascimentoVar == "" ||
       confirmacaoSenhaVar == ""
     ) {
-      mensagem.innerHTML =
-        "Preencha todos os campos!";
 
-      // finalizarAguardar();
+      span_alerta.innerHTML = 'Preencha todos os campos!';
+      mostrarErro();
 
       // se entrar aqui, nem termina de executar o restante da função, já retorna false
       return false;
     } else if (senhaVar != confirmacaoSenhaVar) {
-      mensagem.innerHTML =
-        "As senhas não são iguais!";
+      
+      span_alerta.innerHTML = 'As senhas não são iguais!';
+      mostrarErro();
+      return false;
 
-    } else {
+    } else if(!emailVar.includes('@')){
+      span_alerta.innerHTML = 'Email inválido!';
+      mostrarErro();
+      return false;
+    }
+    
+    else {
 
     }
 
@@ -277,6 +297,7 @@
           //limparFormulario();
           //finalizarAguardar();
         } else {
+          mostrarErro();
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
@@ -308,15 +329,11 @@
       isNaN(verdadeira)
     ) {
 
-      mensagem.innerHTML =
-        "Preencha todos os campos!";
-
-      //finalizarAguardar();
+      span_alerta.innerHTML = 'Preencha todos os campos!';
+      mostrarErro();
 
       //se entrar aqui, nem termina de executar o restante da função, já retorna false
       return false;
-
-    } else {
 
     }
 
@@ -346,9 +363,9 @@
 
           window.location = "login.html";
 
-          //limparFormulario();
-          //finalizarAguardar();
         } else {
+
+          mostrarErro();
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
@@ -360,5 +377,13 @@
     return false;
 
   }
+
+  function mostrarErro() {
+        alerta_erro.style.opacity = "1";
+
+        setTimeout(() => {
+            alerta_erro.style.opacity = "0";
+        }, 3000);
+    }
 
 </script>

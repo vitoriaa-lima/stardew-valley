@@ -28,12 +28,16 @@ function buscarDados(id) {
             fu.coisa_favorita AS coisaFavorita,
             fu.nome_fazenda AS nomeFazenda,
             f.caminho_img AS imgFazenda,
+            f.descricao,
+            f.dica,
             pet.nome AS nomePet,
             pet.caminho_img AS imgPet,
             p.nome AS nomePersonagem,
             p.caminho_img AS imgPersonagem,
             p.aniversario,
-            p.presente_favorito AS presenteFavorito
+            p.presente_favorito AS presenteFavorito,
+            p.casavel,
+            p.genero
         FROM usuario AS u 
             JOIN fazenda_usuario AS fu 
                 ON fu.fk_usuario = u.id

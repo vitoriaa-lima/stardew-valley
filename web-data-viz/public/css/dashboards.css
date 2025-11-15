@@ -160,7 +160,7 @@ main {
 
 #div_pet {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   background-color: #63C6FD;
 }
