@@ -130,7 +130,7 @@ main {
 .principal-seu-espaco {
   display: flex;
   flex-direction: row;
-  padding: 6% 12% 0 12%;
+  padding: 4% 12% 0 12%;
   width: 100%;
   justify-content: space-between;
 }
@@ -156,7 +156,8 @@ main {
 }
 
 #div_fazenda img {
-  width: 110px;
+  width: 100px;
+  margin: 10px 0;
 }
 
 #div_pet {
@@ -167,7 +168,8 @@ main {
 }
 
 #div_pet img {
-  width: 90px;
+  width: 70px;
+  margin: 10px 0;
 }
 
 

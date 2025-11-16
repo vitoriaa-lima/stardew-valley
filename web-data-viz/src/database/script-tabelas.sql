@@ -57,50 +57,50 @@ INSERT INTO personagem VALUES
 CREATE TABLE fazenda(
 id INT PRIMARY KEY AUTO_INCREMENT,
 tipo VARCHAR(50),
-descricao VARCHAR(100),
-dica VARCHAR(100),
+descricao VARCHAR(200),
+dica VARCHAR(200),
 caminho_img VARCHAR(100)
 );
 
 INSERT INTO fazenda (tipo, descricao, dica, caminho_img) VALUES
 	('Fazenda Padrão', 
-	 'Espaço amplo para cultivo e criação de animais.', 
-	 'Ideal para iniciantes focados em agricultura.', 
+	 'Essa fazenda possui um espaço amplo para cultivo e criação de animais.', 
+	 'Ela é ideal para iniciantes no jogo, ou para os amantes da agricultura!', 
 	 '../assets/img-fazenda/padrao.png'),
 
 	('Fazenda Entre Riachos', 
-	 'Grande área de pesca com pouca terra para cultivo.', 
-	 'Ótima para quem quer lucrar pescando.', 
+	 'Essa fazenda possui uma grande área de pesca com pouca terra para cultivo.', 
+	 'Ótima para quem curte a arte da pesca ou quer lucrar pescando.', 
 	 '../assets/img-fazenda/rio.png'),
 
 	('Fazenda na Floresta', 
-	 'Menos espaço agrícola, mas com troncos e forragem renováveis.', 
-	 'Boa para forrageamento e madeira.', 
+	 'Essa fazenda possui menos espaço agrícola, mas com troncos e forragem renováveis.', 
+	 'Boa para forrageamento e madeira ou para explorar sua criatividade nas decorações!', 
 	 '../assets/img-fazenda/floresta.png'),
 
 	('Fazenda na Colina', 
-	 'Terreno irregular com chance de veios de minério.', 
-	 'Perfeita para quem gosta de mineração.', 
+	 'Essa fazenda possui um terreno irregular com chance de veios de minério.', 
+	 'Perfeita para quem gosta de mineração e quer ter um cantinho reservado para isso!', 
 	 '../assets/img-fazenda/colina.png'),
 
 	('Fazenda Remota', 
-	 'Terreno amplo, mas monstros aparecem à noite.', 
-	 'Desafiadora — ideal para combate.', 
+	 'Essa fazenda possui um terreno amplo, mas monstros aparecem à noite.', 
+	 'Ela é desafiadora, ideal para treinar o combate mas não é indicada para os fazendeiros de primeira viagem.', 
 	 '../assets/img-fazenda/selvagem.png'),
 
 	('Fazenda Quatro Cantos', 
-	 'Dividida em quatro áreas com características de outras fazendas.', 
-	 'Excelente para jogo em grupo ou versatilidade.', 
+	 'Essa fazenda é dividida em quatro áreas com características de outras fazendas.', 
+	 'Excelente para jogo em grupo ou versatilidade. Se sempre tem dúvidas de qual escolher, escolha essa!', 
 	 '../assets/img-fazenda/quatro_cantos.png'),
 
 	('Fazenda na Praia', 
-	 'Visual bonito, com boa pesca, mas sem irrigadores.', 
-	 'Boa para desafio e estética.', 
+	 'Essa fazenda possui um visual bonito, com boa pesca, mas sem irrigadores.', 
+	 'Indicada para os que gostam de desafios ou querem explorar a estética do jogo.', 
 	 '../assets/img-fazenda/praia.png'),
 
 	('Fazenda do Prado', 
-	 'Paisagem calma com abelhas e flores especiais.', 
-	 'Focada em mel, flores e relaxamento.', 
+	 'Essa fazenda possui uma paisagem calma com abelhas e flores especiais.', 
+	 'Nessa fazenda, seu proprietário deve focar em produzir mel, flores e relaxar com a paisagem cativante!', 
 	 '../assets/img-fazenda/prado.png');
 
 

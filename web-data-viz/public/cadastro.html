@@ -20,12 +20,12 @@
 </head>
 
 <body>
-<div class="alerta-pai">
+  <div class="alerta-pai">
     <div id="alerta_erro" class="alerta-erro">
-        <img src="./assets/img/alerta.svg">
-        <span id="span_alerta">Credenciais inválidas!<br> Tente novamente.</span>
+      <img src="./assets/img/alerta.svg">
+      <span id="span_alerta">Credenciais inválidas!<br> Tente novamente.</span>
     </div>
-</div>
+  </div>
 
   <main class="main-cadastro">
     <div class="navbar">
@@ -227,33 +227,47 @@
     var confirmacaoSenhaVar = input_confirmacao_senha.value;
     var senhaVar = senha_input.value;
 
+
+    var caracteresEspeciais = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+
+    var temEspecial = false;
+    for (var i = 0; i < caracteresEspeciais.length; i++) {
+      if (senhaVar.includes(caracteresEspeciais[i])) {
+        temEspecial = true;
+      }
+    }
+
     // Verificando se há algum campo em branco
-    if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      generoVar == "#" ||
-      dataNascimentoVar == "" ||
-      confirmacaoSenhaVar == ""
-    ) {
+    if (nomeVar == "" || emailVar == "" || senhaVar == "" || generoVar == "#" || dataNascimentoVar == "" || confirmacaoSenhaVar == "") {
 
       span_alerta.innerHTML = 'Preencha todos os campos!';
       mostrarErro();
-
-      // se entrar aqui, nem termina de executar o restante da função, já retorna false
       return false;
-    } else if (senhaVar != confirmacaoSenhaVar) {
-      
+
+    } 
+    
+    else if (!emailVar.includes('@')) {
+
+      span_alerta.innerHTML = 'Email inválido!';
+      mostrarErro();
+      return false;
+    } 
+    
+    else if(!temEspecial) {
+
+      span_alerta.innerHTML = 'Sua senha é fraca.<br>Inclua caracteres especiais!'
+      mostrarErro();
+      return false;
+    } 
+    
+    else if (senhaVar != confirmacaoSenhaVar) {
+
       span_alerta.innerHTML = 'As senhas não são iguais!';
       mostrarErro();
       return false;
 
-    } else if(!emailVar.includes('@')){
-      span_alerta.innerHTML = 'Email inválido!';
-      mostrarErro();
-      return false;
-    }
-    
+    } 
+
     else {
 
     }
@@ -379,11 +393,11 @@
   }
 
   function mostrarErro() {
-        alerta_erro.style.opacity = "1";
+    alerta_erro.style.opacity = "1";
 
-        setTimeout(() => {
-            alerta_erro.style.opacity = "0";
-        }, 3000);
-    }
+    setTimeout(() => {
+      alerta_erro.style.opacity = "0";
+    }, 3000);
+  }
 
 </script>
