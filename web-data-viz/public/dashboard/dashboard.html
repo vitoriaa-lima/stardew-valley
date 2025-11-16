@@ -22,7 +22,7 @@
     <title>Comunidade Junimo | Dashboard</title>
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao(), mostrarDados()">
     <div class="construcao-pai">
         <div id="alerta_construcao" class="construcao">
             <h1>Robin está trabalhando!</h1>
@@ -66,7 +66,7 @@
 
         <div class="container-dashboard">
             <div class="navbar">
-                <a href="../index.html">
+                <a href="/">
                     <img src="../assets/img/topo.png" alt="topo Stardew Valley">
                 </a>
 
@@ -147,6 +147,61 @@
 </body>
 
 <script>
+
+    function mostrarDados() {
+        fetch("/dashboard/idadeMedia").then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    idade_media.innerHTML = `${resposta.idadeMedia} anos`;
+                })
+            } else {
+                throw ('Houve um erro na API!');
+
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            alert('Erro')
+        })
+
+         fetch("/dashboard/alcancaramPerfeicao").then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    var total = resposta.totalUsuarios;
+                    var alcancaram = resposta.alcancaramVerdadeiraPerfeicao;
+                    var porcPerfeicao = alcancaram / total * 100;
+
+                    porcentagem_perfeicao.innerHTML = `${porcPerfeicao.toFixed(0)}%`;
+                    
+                })
+            } else {
+                throw ('Houve um erro na API!');
+
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            alert('Erro')
+        })
+
+        fetch("/dashboard/personagemFav").then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    var maisFavoritado = resposta.nomePersonagem;
+
+                    personagem_favoritado.innerHTML = maisFavoritado;
+                    favoritado.src = `../assets/img/${maisFavoritado}.png`;
+                    
+                })
+            } else {
+                throw ('Houve um erro na API!');
+
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            alert('Erro')
+        })
+
+
+    }
 
     const graficoGenero = document.getElementById('grafico_genero');
 
