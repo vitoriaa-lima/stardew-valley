@@ -132,11 +132,11 @@ html {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 60px;
+    margin: 80px 0;
     gap: 30px;
 }
 
-.sobre-jogo h1 {
+#titulo-sobre {
     font-family: "Press Start 2P", system-ui;
     font-size: 40px;
     text-shadow: -3px 3px 2px #00000044;
@@ -151,6 +151,72 @@ html {
 #img_junimos {
     width: 80%;
 }
+
+
+/* Estilização "Habilidades" COMEÇA AQUI */
+.habilidades {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-habilidades {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin: 50px 60px;
+    font-family: "Inter", sans-serif;
+
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    align-items: center;
+    padding: 20px;
+    gap: 15px;
+    width: 225px;
+}
+.cultivo{
+    color: #5B7A45;
+    background-color: #B5D780;
+}
+.mineracao{
+    color: #2F353B;
+    background-color: #9BAEBE;  
+}
+.pesca{
+    color: #1D373B;
+    background-color: #9AC2C6; 
+}
+.coleta{
+    color: #733F24;
+    background-color: #E3A777;   
+}
+.combate{
+    color: #6F3E26;
+    background-color: #DDAB90;
+}
+
+.card p{
+    font-size: 12px;
+    color: #000;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.card-titulo{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.card-titulo img{
+    width: 35px;
+}
+
 
 /* Estilização do Login COMEÇA AQUI */
 .container-formulario {
