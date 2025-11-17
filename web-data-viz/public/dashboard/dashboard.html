@@ -22,7 +22,8 @@
     <title>Comunidade Junimo | Dashboard</title>
 </head>
 
-<body onload="validarSessao(), mostrarDados()">
+<body
+    onload="validarSessao(), mostrarDados(), obterDadosGenero(), obterDadosPet(), obterDadosFazenda(), obterDadosPerfeicao()">
     <div class="construcao-pai">
         <div id="alerta_construcao" class="construcao">
             <h1>Robin está trabalhando!</h1>
@@ -148,6 +149,238 @@
 
 <script>
 
+
+    function obterDadosGenero() {
+        fetch("/dashboard/genero", { cache: 'no-store' }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log("Dados sobre gênero recebido: ", resposta)
+                    plotarDadosGenero(resposta);
+                })
+            } else {
+                console.error("Nenhum dado encontrado para Gêneros.");
+            }
+        }).catch(function (error) {
+            console.error("Erro no fetch do gênero.");
+        });
+    }
+
+    function plotarDadosGenero(resposta) {
+        console.log("Plotando Gênero no gráfico");
+
+        var generoOpcao = [];
+        var generoValor = [];
+
+        for (var i = 0; i < resposta.length; i++) {
+            var dadoAtual = resposta[i];
+
+            if (dadoAtual.genero == "M") {
+                generoOpcao.push("Masculino");
+            } else if (dadoAtual.genero == "F") {
+                generoOpcao.push("Feminino");
+            } else {
+                generoOpcao.push("Outros");
+            }
+
+            generoValor.push(dadoAtual.generoTotal);
+        }
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: generoOpcao,
+            datasets: [{
+                label: 'Total de jogadores',
+                data: generoValor,
+                backgroundColor: ['#003400', '#006414', '#009929']
+            }]
+        };
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'pie',
+            data: dados
+        };
+
+        // Adicionando gráfico criado em div na tela
+        new Chart(
+            document.getElementById("grafico_genero"),
+            config
+        );
+    }
+
+    function obterDadosPet() {
+        fetch("/dashboard/tipoPet", { cache: 'no-store' }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log("Dados sobre gênero recebido: ", resposta)
+                    plotarDadosPet(resposta);
+                })
+            } else {
+                console.error("Nenhum dado encontrado para Tipo de Pet.");
+            }
+        }).catch(function (error) {
+            console.error("Erro no fetch do Tipo de Pet.");
+        });
+    }
+
+    function plotarDadosPet(resposta) {
+        console.log("Plotando Tipos de Pet no gráfico");
+
+        var tiposPet = [];
+        var tiposPetValor = [];
+
+        for (var i = 0; i < resposta.length; i++) {
+            var dadoAtual = resposta[i];
+
+            tiposPet.push(dadoAtual.petFavorito);
+            tiposPetValor.push(dadoAtual.totalEscolhido);
+        }
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: tiposPet,
+            datasets: [{
+                label: 'Total de jogadores',
+                data: tiposPetValor,
+                backgroundColor: ['#003400', '#006414', '#009929']
+            }]
+        };
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'bar',
+            data: dados,
+            options: {
+                indexAxis: 'y', // Deixa o gráfico horizontal
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        // Adicionando gráfico criado em div na tela
+        new Chart(
+            document.getElementById("grafico_pet"),
+            config
+        );
+    }
+
+    function obterDadosFazenda() {
+        fetch("/dashboard/tipoFazenda", { cache: 'no-store' }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log("Dados sobre tipo de fazenda recebido: ", resposta)
+                    plotarDadosFazenda(resposta);
+                })
+            } else {
+                console.error("Nenhum dado encontrado para Tipos de Fazenda.");
+            }
+        }).catch(function (error) {
+            console.error("Erro no fetch do tipo de fazenda.");
+        });
+    }
+
+    function plotarDadosFazenda(resposta) {
+
+        console.log("Plotando Tipos de Pet no gráfico");
+
+        var tiposFazenda = [];
+        var tiposFazendaValor = [];
+
+        for (var i = 0; i < resposta.length; i++) {
+            var dadoAtual = resposta[i];
+
+            tiposFazenda.push(dadoAtual.tipoFazenda);
+            tiposFazendaValor.push(dadoAtual.totalEscolhido);
+        }
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: tiposFazenda,
+            datasets: [{
+                label: 'Total de jogadores',
+                data: tiposFazendaValor,
+                backgroundColor: ['#003400', '#006414', '#009929', '#5ccb5f', '#98ff96']
+            }]
+        };
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'bar',
+            data: dados
+        };
+
+        // Adicionando gráfico criado em div na tela
+        new Chart(
+            document.getElementById("grafico_fazenda_tipo"),
+            config
+        );
+    }
+
+    function obterDadosPerfeicao() {
+        fetch("/dashboard/perfeicao", { cache: 'no-store' }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log("Dados sobre perfeição geral recebido: ", resposta)
+                    plotarDadosPerfeicao(resposta[0]);
+                })
+            } else {
+                console.error("Nenhum dado encontrado para perfeição geral.");
+            }
+        }).catch(function (error) {
+            console.error("Erro no fetch do perfeição geral.");
+        });
+    }
+
+    function plotarDadosPerfeicao(resposta) {
+        console.log("Plotando perfeição geral no gráfico");
+
+        var totalUsuarios = Number(resposta.totalUsuarios);
+        var perfeicao = Number(resposta.alcancaramPerfeicao);
+        var verdadeiraPerfeicao = Number(resposta.alcancaramVerdadeiraPerfeicao);
+
+        var naoAlcancouPerfeicao = totalUsuarios - perfeicao;
+        var naoAlcandouVerdadeiraPerfeicao = totalUsuarios - verdadeiraPerfeicao;
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: ['Perfeição', 'Verdadeira Perfeição'],
+            datasets: [{
+                label: 'Não Alcançou',
+                data: [naoAlcancouPerfeicao, naoAlcandouVerdadeiraPerfeicao],
+                backgroundColor: '#008489',
+                borderWidth: 1
+            },
+            {
+                label: 'Alcançou',
+                data: [perfeicao, verdadeiraPerfeicao],
+                backgroundColor: '#93C2C4',
+                borderWidth: 1
+            }
+            ]
+        };
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'bar',
+            data: dados,
+            options: {
+                scales: {
+                    y: { beginAtZero: true },
+                    x: { beginAtZero: true }
+                }
+            }
+        };
+
+        // Adicionando gráfico criado em div na tela
+        new Chart(
+            document.getElementById("grafico_perfeicao"),
+            config
+        );
+    }
+
     function mostrarDados() {
         fetch("/dashboard/idadeMedia").then(function (resposta) {
             if (resposta.ok) {
@@ -163,7 +396,7 @@
             alert('Erro')
         })
 
-         fetch("/dashboard/alcancaramPerfeicao").then(function (resposta) {
+        fetch("/dashboard/alcancaramPerfeicao").then(function (resposta) {
             if (resposta.ok) {
                 resposta.json().then(function (resposta) {
                     var total = resposta.totalUsuarios;
@@ -171,7 +404,7 @@
                     var porcPerfeicao = alcancaram / total * 100;
 
                     porcentagem_perfeicao.innerHTML = `${porcPerfeicao.toFixed(0)}%`;
-                    
+
                 })
             } else {
                 throw ('Houve um erro na API!');
@@ -189,7 +422,7 @@
 
                     personagem_favoritado.innerHTML = maisFavoritado;
                     favoritado.src = `../assets/img/${maisFavoritado}.png`;
-                    
+
                 })
             } else {
                 throw ('Houve um erro na API!');
@@ -202,95 +435,6 @@
 
 
     }
-
-    const graficoGenero = document.getElementById('grafico_genero');
-
-    new Chart(graficoGenero, {
-        type: 'pie',
-        data: {
-            labels: ['Feminino', 'Masculino', 'Outros'],
-            datasets: [{
-                label: '',
-                data: [12, 19, 3],
-                borderWidth: 1
-            }]
-        }
-    });
-
-    const graficoFazenda = document.getElementById('grafico_fazenda_tipo');
-
-    new Chart(graficoFazenda, {
-        type: 'bar',
-        data: {
-            labels: ['Padrão', 'Entre Riachos', 'Colina', 'Remota', 'Qautro Cantos', 'Praia', 'Prado'],
-            datasets: [{
-                label: '',
-                data: [12, 19, 3, 1, 2, 5, 1],
-                backgroundColor: ['#003400', '#006414', '#009929', '#5ccb5f', '#98ff96',],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-    const graficoPet = document.getElementById('grafico_pet');
-
-    new Chart(graficoPet, {
-        type: 'bar',
-        data: {
-            labels: ['Gato', 'Cachorro', 'Tartaruga', 'Passarinho'],
-            datasets: [{
-                label: '',
-                data: [12, 19, 3, 1],
-                backgroundColor: ['#006414', '#009929', '#5ccb5f', '#98ff96'],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            indexAxis: 'y',
-            scales: {
-                x: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-    const graficoPerfeicao = document.getElementById('grafico_perfeicao');
-
-    new Chart(graficoPerfeicao, {
-        type: 'bar',
-        data: {
-            labels: ['Perfeição', 'Verdadeira Perfeição'],
-            datasets: [{
-                label: 'Não Alcançou',
-                data: [12, 19],
-                backgroundColor: '#008489',
-                borderWidth: 1
-            },
-
-            {
-                label: 'Alcançou',
-                data: [3, 1],
-                backgroundColor: '#93C2C4',
-                borderWidth: 1
-            }
-            ]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
 
 
     function mostrarAlerta() {

@@ -159,3 +159,24 @@ SELECT * FROM fazenda_usuario;
 SELECT * FROM fazenda;
 SELECT * FROM personagem;
 SELECT * FROM pet;
+
+
+-- Idade média dos jogadores
+SELECT TRUNCATE(AVG(TIMESTAMPDIFF(YEAR, dt_nascimento, NOW())), 0) AS idadeMedia FROM usuario;
+
+
+-- Personagem mais favoritado
+SELECT p.nome AS nomePersonagem,
+	COUNT(fk_personagem_favorito) AS frequencia
+FROM fazenda_usuario AS fu
+	JOIN personagem AS p
+		ON p.id = fu.fk_personagem_favorito
+	GROUP BY nomePersonagem
+	LIMIT 1;
+
+
+-- Alcançaram a perfeição
+SELECT COUNT(u.id) AS totalUsuarios,
+	SUM(verdadeira_perfeicao) AS alcancaramVerdadeiraPerfeicao
+    FROM usuario AS u JOIN fazenda_usuario AS fu
+		ON u.id = fu.fk_usuario;
