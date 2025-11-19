@@ -90,6 +90,9 @@ main {
   padding: 20px 28px;
   border-top: 1px solid #3E2429;
 }
+.lateral-sair:hover{
+  cursor: pointer;
+}
 
 .lateral-sair span {
   display: flex;
@@ -198,6 +201,9 @@ main {
 #img-quiz {
   width: 185px;
 }
+#img-quiz:hover{
+  cursor: pointer;
+}
 
 /* Estilização Mural ACABA AQUI */
 
@@ -248,18 +254,28 @@ main {
   display: flex;
   flex-direction: column;
   padding: 5%;
-  gap: 30px;
+  gap: 50px;
 }
 
 
 .grupo-graficos {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
-.grafico-um {
-  height: 200px;
+.grafico-tres {
+  height: 250px;
+}
+.grafico-um{
+  width: 400px;
+}
+
+.grafico{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
 }
 
 /* Estilização Dashboard ACABA AQUI */
@@ -268,16 +284,53 @@ main {
 /* Estilização Comunidade COMEÇA AQUI */
 .principal-comunidade {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   font-family: 'Stardew Valley';
+  margin-top: 5%;
+}
+.principal-comunidade button{
+  font-family: 'Stardew Valley';
+  font-size: 30px;
+  border-radius: 5px;
+  border: #CF963C 4px solid;
+  background-color: #F3B46C;
+  cursor: pointer;
 }
 
 .principal-comunidade .formulario {
   display: flex;
   flex-direction: column;
   padding: 50px;
-  background: url('../assets/img/fundo-formulario.png');
+  gap: 15px;
+  background: no-repeat url('../assets/img/fundo-formulario.png');
+}
+.principal-comunidade .formulario h1{
+  font-size: 30px;
+}
+.principal-comunidade .formulario h2{
+  font-size: 22px;
+}
+.principal-comunidade .formulario textarea, input{
+  border-radius: 5px;
+  border: none;
+  background-color: #F3B46C;
+}
+.principal-comunidade .formulario textarea{
+  height: 110px;
+}
+.principal-comunidade .formulario input{
+  height: 40px;
+}
+#button-formulario{
+  height: 40px;
+  color: #22740A;
+  margin-top: 10px;
+  width: 30%;
+  align-self: center;
+}
+#button-sair{
+  color: #B91F17;
 }
 
 /* Estilização Comunidade ACABA AQUI */

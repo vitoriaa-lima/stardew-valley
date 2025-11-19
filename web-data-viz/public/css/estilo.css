@@ -179,25 +179,41 @@ html {
     gap: 15px;
     width: 225px;
 }
+
 .cultivo{
     color: #5B7A45;
     background-color: #B5D780;
+}
+.cultivo:hover{
+    box-shadow: 5px 10px 15px 2px inset #749b5886;
 }
 .mineracao{
     color: #2F353B;
     background-color: #9BAEBE;  
 }
+.mineracao:hover{
+    box-shadow: 5px 10px 15px 2px inset #2f353b27;
+}
 .pesca{
     color: #1D373B;
     background-color: #9AC2C6; 
+}
+.pesca:hover{
+    box-shadow: 5px 10px 15px 2px inset #1d373b2f;
 }
 .coleta{
     color: #733F24;
     background-color: #E3A777;   
 }
+.coleta:hover{
+    box-shadow: 5px 10px 15px 2px inset #73402431;
+}
 .combate{
     color: #6F3E26;
     background-color: #DDAB90;
+}
+.combate:hover{
+        box-shadow: 5px 10px 15px 2px inset #6f3e263f;
 }
 
 .card p{

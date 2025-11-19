@@ -228,7 +228,7 @@
     var senhaVar = senha_input.value;
 
 
-    var caracteresEspeciais = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+    var caracteresEspeciais = ['@', '#', '$', '%', '&', '!', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
     var temEspecial = false;
     for (var i = 0; i < caracteresEspeciais.length; i++) {
@@ -255,7 +255,7 @@
     
     else if(!temEspecial) {
 
-      span_alerta.innerHTML = 'Sua senha é fraca.<br>Inclua caracteres especiais!'
+      span_alerta.innerHTML = 'Sua senha é fraca.<br>Inclua números ou caracteres especiais!'
       mostrarErro();
       return false;
     } 

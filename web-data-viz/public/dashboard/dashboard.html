@@ -52,9 +52,14 @@
                         <span id="selecionada">Dashboard</span>
                     </a>
 
-                    <a onclick="mostrarAlerta()" class="opcao">
+                    <a href="./comunidade.html" class="opcao">
                         <img src="../assets/img/comunidade.svg">
                         <span>Comunidade</span>
+                    </a>
+
+                    <a onclick="mostrarAlerta()" class="opcao">
+                        <img src="../assets/img/cruzadinha.svg">
+                        <span>Cruzadinha</span>
                     </a>
                 </div>
             </div>
@@ -112,31 +117,33 @@
                         </span>
                         <div class="metrica-titulo">
                             <h1 id="porcentagem_perfeicao">45%</h1>
-                            <p>Alcançaram a perfeição</p>
+                            <p>Alcançaram a verdadeira perfeição</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="graficos">
                     <div class="grupo-graficos">
-                        <div class="grafico-um">
-                            <h4>Gênero em Relação ao Total de Jogadores</h4>
-                            <canvas id="grafico_genero"></canvas>
+                        <div class="grafico-um grafico">
+                            <h4>Perfeição e Verdadeira Perfeição</h4>
+                            <canvas id="grafico_perfeicao"></canvas>
                         </div>
 
-                        <div class="grafico-dois">
+
+
+                        <div class="grafico-dois grafico">
                             <h4>Tipo de Fazenda em Relação ao Total de Jogadores</h4>
                             <canvas id="grafico_fazenda_tipo"></canvas>
                         </div>
                     </div>
 
                     <div class="grupo-graficos">
-                        <div class="grafico-tres">
-                            <h4>Perfeição e Verdadeira Perfeição</h4>
-                            <canvas id="grafico_perfeicao"></canvas>
+                        <div class="grafico-tres grafico">
+                            <h4>Gênero em Relação ao Total de Jogadores</h4>
+                            <canvas id="grafico_genero"></canvas>
                         </div>
 
-                        <div class="grafico-quatro">
+                        <div class="grafico-quatro grafico">
                             <h4>Tipo de Pet em Relação ao Total de Jogadores</h4>
                             <canvas id="grafico_pet"></canvas>
                         </div>
@@ -185,27 +192,23 @@
             generoValor.push(dadoAtual.generoTotal);
         }
 
-        // Criando estrutura para plotar gráfico - dados
-        let dados = {
-            labels: generoOpcao,
-            datasets: [{
-                label: 'Total de jogadores',
-                data: generoValor,
-                backgroundColor: ['#003400', '#006414', '#009929']
-            }]
-        };
 
-        // Criando estrutura para plotar gráfico - config
-        const config = {
+        const graficoGenero = document.getElementById('grafico_genero');
+
+        new Chart(graficoGenero, {
             type: 'pie',
-            data: dados
-        };
+            data: {
+                labels: generoOpcao,
+                datasets: [{
+                    label: 'Total de jogadores',
+                    data: generoValor,
+                    borderWidth: 1,
+                    backgroundColor: ['#E65100', '#FF9800', '#FFB74D']
+                }]
+            }
+        });
 
-        // Adicionando gráfico criado em div na tela
-        new Chart(
-            document.getElementById("grafico_genero"),
-            config
-        );
+
     }
 
     function obterDadosPet() {
@@ -236,35 +239,30 @@
             tiposPetValor.push(dadoAtual.totalEscolhido);
         }
 
-        // Criando estrutura para plotar gráfico - dados
-        let dados = {
-            labels: tiposPet,
-            datasets: [{
-                label: 'Total de jogadores',
-                data: tiposPetValor,
-                backgroundColor: ['#003400', '#006414', '#009929']
-            }]
-        };
 
-        // Criando estrutura para plotar gráfico - config
-        const config = {
+        const graficoPet = document.getElementById('grafico_pet');
+
+        new Chart(graficoPet, {
             type: 'bar',
-            data: dados,
+            data: {
+                labels: tiposPet,
+                datasets: [{
+                    label: 'Total de jogadores',
+                    data: tiposPetValor,
+                    borderWidth: 1,
+                    backgroundColor: ['#003400', '#006414', '#009929']
+                }]
+            },
             options: {
-                indexAxis: 'y', // Deixa o gráfico horizontal
+                indexAxis: 'y',
                 scales: {
                     x: {
                         beginAtZero: true
                     }
                 }
             }
-        };
+        });
 
-        // Adicionando gráfico criado em div na tela
-        new Chart(
-            document.getElementById("grafico_pet"),
-            config
-        );
     }
 
     function obterDadosFazenda() {
@@ -302,7 +300,7 @@
             datasets: [{
                 label: 'Total de jogadores',
                 data: tiposFazendaValor,
-                backgroundColor: ['#003400', '#006414', '#009929', '#5ccb5f', '#98ff96']
+                backgroundColor: ['#800000', '#8B0000', '#B22222', '#A52A2A', '#FF6347', 'FF7F50', '#FFA07A']
             }]
         };
 

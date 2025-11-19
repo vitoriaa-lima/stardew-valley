@@ -48,9 +48,14 @@
                         <span>Dashboard</span>
                     </a>
 
-                    <a onclick="mostrarAlerta()" class="opcao">
+                    <a href="./comunidade.html" class="opcao">
                         <img src="../assets/img/comunidade.svg">
                         <span>Comunidade</span>
+                    </a>
+
+                    <a onclick="mostrarAlerta()" class="opcao">
+                        <img src="../assets/img/cruzadinha.svg">
+                        <span>Cruzadinha</span>
                     </a>
                 </div>
             </div>
@@ -135,7 +140,6 @@
             if (resposta.ok) {
 
                 resposta.json().then(function (resposta) {
-                    sessionStorage.COISA_USUARIO = resposta.coisaFavorita;
 
                     img_fazenda.src = resposta.imgFazenda;
 

@@ -180,3 +180,34 @@ SELECT COUNT(u.id) AS totalUsuarios,
 	SUM(verdadeira_perfeicao) AS alcancaramVerdadeiraPerfeicao
     FROM usuario AS u JOIN fazenda_usuario AS fu
 		ON u.id = fu.fk_usuario;
+
+
+-- Total de usuários dividido por gênero
+SELECT u.genero, COUNT(u.genero) AS generoTotal
+	FROM usuario AS u
+    GROUP BY genero;
+    
+-- Total de usuários dividido por tipo de pet
+SELECT p.tipo AS petFavorito,
+	COUNT(p.nome) AS totalEscolhido
+	FROM fazenda_usuario AS fu
+		JOIN pet AS p
+			ON p.id = fu.fk_pet_favorito
+		GROUP BY p.tipo;
+        
+-- Total de usuários dividido por tipo de fazenda
+SELECT f.tipo AS tipoFazenda,
+	COUNT(fk_fazenda_favorita) AS totalEscolhido
+    FROM fazenda_usuario AS fu
+		JOIN fazenda AS f
+			ON f.id = fu.fk_fazenda_favorita
+		GROUP BY f.tipo;
+
+
+
+-- Total de usuários que Alcançaram ou não a perfeição ou a verdadeira perfeição
+SELECT COUNT(u.id) AS totalUsuarios,
+	SUM(verdadeira_perfeicao) AS alcancaramVerdadeiraPerfeicao,
+    SUM(perfeicao) AS alcacaramPerfeicao
+    FROM usuario AS u JOIN fazenda_usuario AS fu
+		ON u.id = fu.fk_usuario;
