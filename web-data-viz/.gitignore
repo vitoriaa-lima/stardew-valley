@@ -4,3 +4,5 @@ package-lock.json
 
 .github
 .env.dev
+.env
+DOCUMENTOS_DE_APOIO
