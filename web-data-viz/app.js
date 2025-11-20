@@ -33,6 +33,7 @@ app.use("/usuarios", usuarioRouter);
 app.use("/fazenda", fazendaRouter);
 app.use("/dashboard", dashboardRouter);
 
+
 app.listen(PORTA_APP, function () {
     console.log(`
     ##   ##  ######   #####             ####       ##     ######     ##              ##  ##    ####    ######  
