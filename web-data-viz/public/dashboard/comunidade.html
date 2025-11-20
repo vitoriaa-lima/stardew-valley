@@ -17,6 +17,14 @@
 </head>
 
 <body onload="validarSessao()">
+    <div class="construcao-pai">
+        <div id="alerta_construcao" class="construcao">
+            <h1>Robin está trabalhando!</h1>
+            <img src="../assets/img/robin_construcao.png">
+            <p>Esse espaço está em<br>construção. Volte depois!</p>
+        </div>
+    </div>
+
     <main class="main-comunidade">
         <div class="navbar-lateral">
             <div class="lateral-saudacoes">
@@ -92,13 +100,15 @@
 
             <div id="comunidade_parte2" class="container-comunidade container-comunidade-parte2">
 
-                <h1><img src="../assets/img/recado.svg"> Quer escrever algo novo? <span onclick="ocultarParte2()">Clique aqui.</span></h1>
+                <h1><img src="../assets/img/recado.svg"> Quer escrever algo novo? <span onclick="ocultarParte2()">Clique
+                        aqui.</span></h1>
 
                 <div class="comentarios">
                     <div class="comentario">
                         <div class="comentario-corpo">
                             <h2>Um segredo da madrugada na Vila Pelicanos</h2>
-                            <p>Para os jogadores novos, experimentem sacudir o arbusto a meia-noite! Voce pode ter uma surpresa interessante e engracada!</p>
+                            <p>Para os jogadores novos, experimentem sacudir o arbusto a meia-noite! Voce pode ter uma
+                                surpresa interessante e engracada!</p>
                         </div>
 
                         <h2>- Vitória 30/10/2025</h2>
@@ -107,7 +117,8 @@
                     <div class="comentario">
                         <div class="comentario-corpo">
                             <h2>Um segredo da madrugada na Vila Pelicanos</h2>
-                            <p>Para os jogadores novos, experimentem sacudir o arbusto a meia-noite! Voce pode ter uma surpresa interessante e engracada!</p>
+                            <p>Para os jogadores novos, experimentem sacudir o arbusto a meia-noite! Voce pode ter uma
+                                surpresa interessante e engracada!</p>
                         </div>
 
                         <h2>- Vitória 30/10/2025</h2>
@@ -123,12 +134,12 @@
 <script>
     comunidade_parte2.style.display = "none";
 
-    function ocultarParte1(){
+    function ocultarParte1() {
         comunidade_parte1.style.display = "none";
         comunidade_parte2.style.display = "flex";
     }
 
-    function ocultarParte2(){
+    function ocultarParte2() {
         comunidade_parte1.style.display = "flex";
         comunidade_parte2.style.display = "none";
     }
