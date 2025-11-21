@@ -16,7 +16,7 @@
     <title>Comunidade Junimo | Comunidade</title>
 </head>
 
-<body onload="validarSessao(), listar()">
+<body onload="validarSessao()">
     <div class="construcao-pai">
         <div id="alerta_construcao" class="construcao">
             <h1>Robin está trabalhando!</h1>
@@ -143,6 +143,7 @@
 
             if (resposta.ok) {
                 ocultarParte1();
+                listar();
             } else {
                 mostrarErro();
                 throw "Houve um erro ao tentar publicar o comentário!";
@@ -202,6 +203,10 @@
     function ocultarParte1() {
         comunidade_parte1.style.display = "none";
         comunidade_parte2.style.display = "flex";
+        listar();
+
+        input_titulo.value = "";
+        textarea_mensagem.value = "";
     }
 
     function ocultarParte2() {
