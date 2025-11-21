@@ -154,6 +154,14 @@ CONSTRAINT chk_verdadeira_perfeicao CHECK(verdadeira_perfeicao IN(0, 1)),
 PRIMARY KEY (id, fk_usuario)
 );
 
+CREATE TABLE comunidade(
+id INT PRIMARY KEY AUTO_INCREMENT,
+fk_usuario INT,
+titulo VARCHAR(100),
+mensagem VARCHAR(500),
+dt_publicacao DATETIME DEFAULT CURRENT_TIMESTAMP()
+);
+
 SELECT * FROM usuario;
 SELECT * FROM fazenda_usuario;
 SELECT * FROM fazenda;
@@ -172,6 +180,7 @@ FROM fazenda_usuario AS fu
 	JOIN personagem AS p
 		ON p.id = fu.fk_personagem_favorito
 	GROUP BY nomePersonagem
+    ORDER BY frequencia DESC
 	LIMIT 1;
 
 

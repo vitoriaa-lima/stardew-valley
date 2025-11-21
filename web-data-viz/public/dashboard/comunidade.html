@@ -24,6 +24,12 @@
             <p>Esse espaço está em<br>construção. Volte depois!</p>
         </div>
     </div>
+    <div class="alerta-pai">
+        <div id="alerta_erro" class="alerta-erro">
+            <img src="../assets/img/alerta.svg">
+            <span id="span_alerta">Houve um erro ao comentar! <br> Tente novamente!</span>
+        </div>
+    </div>
 
     <main class="main-comunidade">
         <div class="navbar-lateral">
@@ -87,12 +93,12 @@
                     <h1>Escreva uma dica ou easter egg sobre Stardew Valley!</h1>
 
                     <h2>Titulo:</h2>
-                    <input type="text">
+                    <input id="input_titulo" type="text">
 
                     <h2>Mensagem:</h2>
-                    <textarea></textarea>
+                    <textarea id="textarea_mensagem"></textarea>
 
-                    <button id="button-formulario">Ok</button>
+                    <button onclick="cadastrar()" id="button-formulario">Ok</button>
                 </div>
 
                 <button onclick="ocultarParte1()" id="button-sair">X</button>
@@ -132,6 +138,55 @@
 </html>
 
 <script>
+    function cadastrar() {
+        var tituloVar = input_titulo.value;
+        var mensagemVar = textarea_mensagem.value;
+        var idUsuario = Number(sessionStorage.ID_USUARIO);
+
+        if (tituloVar == "" || mensagemVar == "") {
+            mostrarErro();
+            return false;
+        }
+
+        fetch("/comunidade/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                tituloServer: tituloVar,
+                mensagemServer: mensagemVar,
+                fkUsuario: idUsuario
+            })
+        }).then(function (resposta) {
+            console.log("resposta:" + resposta);
+
+            if (resposta.ok) {
+                ocultarParte1();
+            } else {
+                mostrarErro();
+                throw "Houve um erro ao tentar publicar o comentário!";
+                span_erro.innerHTML =`
+                    Houve um erro ao tentar publicar o comentário!
+                `;
+            }
+        })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+
+            })
+        return false;
+    }
+
+
+    function mostrarErro() {
+        alerta_erro.style.opacity = "1";
+
+        setTimeout(() => {
+            alerta_erro.style.opacity = "0";
+        }, 3000);
+    }
+
     comunidade_parte2.style.display = "none";
 
     function ocultarParte1() {

@@ -1,7 +1,7 @@
-@font-face {
+/* @font-face {
   font-family: 'Stardew Valley';
   src: url('../fonts/Stardew_Valley.otf');
-}
+} */
 
 * {
   margin: 0;
@@ -419,6 +419,37 @@ main {
 }
 
 .construcao-pai{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+/* Estilização ALERTA COMEÇA AQUI */
+.alerta-erro {
+    position: fixed;
+    background-color: #ffffff;
+    font-family: "Inter", sans-serif;
+    border: 2px solid #00000021;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px 15px 10px;
+    font-weight: bold;
+    color: #803000;
+    box-shadow: -2px 2px 8px #00000030;
+    margin-top: 8%;
+    margin-right: 20px;
+
+    /* visibilidade da div */
+    opacity: 0;
+   
+}
+
+.alerta-erro img {
+    width: 45px;
+}
+
+.alerta-pai{
     display: flex;
     width: 100%;
     justify-content: flex-end;

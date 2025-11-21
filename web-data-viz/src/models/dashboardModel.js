@@ -31,6 +31,7 @@ function personagemFav(){
 	        JOIN personagem AS p
 		        ON p.id = fu.fk_personagem_favorito
 	        GROUP BY nomePersonagem
+            ORDER BY frequencia DESC
 	        LIMIT 1;
     `;
 

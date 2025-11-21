@@ -242,29 +242,29 @@
       mostrarErro();
       return false;
 
-    } 
-    
+    }
+
     else if (!emailVar.includes('@')) {
 
       span_alerta.innerHTML = 'Email inválido!';
       mostrarErro();
       return false;
-    } 
-    
-    else if(!temEspecial) {
+    }
+
+    else if (!temEspecial) {
 
       span_alerta.innerHTML = 'Sua senha é fraca.<br>Inclua números ou caracteres especiais!'
       mostrarErro();
       return false;
-    } 
-    
+    }
+
     else if (senhaVar != confirmacaoSenhaVar) {
 
       span_alerta.innerHTML = 'As senhas não são iguais!';
       mostrarErro();
       return false;
 
-    } 
+    }
 
     else {
 

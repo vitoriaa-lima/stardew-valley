@@ -20,6 +20,7 @@ var usuarioRouter = require("./src/routes/usuarios");
 
 var fazendaRouter = require("./src/routes/fazenda");
 var dashboardRouter = require("./src/routes/dashboard");
+var comunidadeRouter = require("./src/routes/comunidade");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -32,6 +33,7 @@ app.use("/usuarios", usuarioRouter);
 
 app.use("/fazenda", fazendaRouter);
 app.use("/dashboard", dashboardRouter);
+app.use("/comunidade", comunidadeRouter);
 
 
 app.listen(PORTA_APP, function () {
