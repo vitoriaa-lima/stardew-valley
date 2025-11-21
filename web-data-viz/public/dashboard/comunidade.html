@@ -16,7 +16,7 @@
     <title>Comunidade Junimo | Comunidade</title>
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao(), listar()">
     <div class="construcao-pai">
         <div id="alerta_construcao" class="construcao">
             <h1>Robin está trabalhando!</h1>
@@ -109,27 +109,7 @@
                 <h1><img src="../assets/img/recado.svg"> Quer escrever algo novo? <span onclick="ocultarParte2()">Clique
                         aqui.</span></h1>
 
-                <div class="comentarios">
-                    <div class="comentario">
-                        <div class="comentario-corpo">
-                            <h2>Um segredo da madrugada na Vila Pelicanos</h2>
-                            <p>Para os jogadores novos, experimentem sacudir o arbusto a meia-noite! Voce pode ter uma
-                                surpresa interessante e engracada!</p>
-                        </div>
-
-                        <h2>- Vitória 30/10/2025</h2>
-                    </div>
-
-                    <div class="comentario">
-                        <div class="comentario-corpo">
-                            <h2>Um segredo da madrugada na Vila Pelicanos</h2>
-                            <p>Para os jogadores novos, experimentem sacudir o arbusto a meia-noite! Voce pode ter uma
-                                surpresa interessante e engracada!</p>
-                        </div>
-
-                        <h2>- Vitória 30/10/2025</h2>
-                    </div>
-                </div>
+                <div id="div_comentarios" class="comentarios"></div>
             </div>
         </div>
     </main>
@@ -166,7 +146,7 @@
             } else {
                 mostrarErro();
                 throw "Houve um erro ao tentar publicar o comentário!";
-                span_erro.innerHTML =`
+                span_erro.innerHTML = `
                     Houve um erro ao tentar publicar o comentário!
                 `;
             }
@@ -176,6 +156,36 @@
 
             })
         return false;
+    }
+
+    function listar() {
+        fetch("/comunidade/listar").then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+
+                    console.log(resposta);
+                    for (var i = 0; i < resposta.length; i++) {
+                        dadoAtual = resposta[i];
+                        div_comentarios.innerHTML += `
+                            <div class="comentario">
+                                <div class="comentario-corpo">
+                                    <h2>${dadoAtual.titulo}</h2>
+                                    <p>${dadoAtual.mensagem}</p>
+                                </div>
+
+                                <h2>-${dadoAtual.nome} ${dadoAtual.dataPublicacao}</h2>
+                            </div>
+                        `;
+                    }
+                })
+            } else {
+                throw ('Houve um erro na API!');
+
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            alert('Erro')
+        })
     }
 
 

@@ -10,6 +10,20 @@ function cadastrar(titulo, mensagem, fkUsuario) {
     return database.executar(instrucaoSql);
 }
 
+function listar() {
+    var instrucaoSql =`
+        SELECT nome, comunidade.id, titulo, mensagem, 
+	        DATE_FORMAT(dt_publicacao, '%d/%m/%Y') AS dataPublicacao
+	    FROM comunidade JOIN usuario
+            ON fk_usuario = usuario.id
+        ORDER BY id DESC;
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
-    cadastrar
+    cadastrar,
+    listar
 };

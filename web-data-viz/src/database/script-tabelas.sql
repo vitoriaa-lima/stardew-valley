@@ -159,7 +159,10 @@ id INT PRIMARY KEY AUTO_INCREMENT,
 fk_usuario INT,
 titulo VARCHAR(100),
 mensagem VARCHAR(500),
-dt_publicacao DATETIME DEFAULT CURRENT_TIMESTAMP()
+dt_publicacao DATETIME DEFAULT CURRENT_TIMESTAMP(),
+CONSTRAINT fk_comunidade_usuario
+	FOREIGN KEY (fk_usuario)
+		REFERENCES usuario(id)
 );
 
 SELECT * FROM usuario;
@@ -167,6 +170,7 @@ SELECT * FROM fazenda_usuario;
 SELECT * FROM fazenda;
 SELECT * FROM personagem;
 SELECT * FROM pet;
+SELECT * FROM comunidade;
 
 
 -- Idade média dos jogadores
@@ -220,3 +224,10 @@ SELECT COUNT(u.id) AS totalUsuarios,
     SUM(perfeicao) AS alcacaramPerfeicao
     FROM usuario AS u JOIN fazenda_usuario AS fu
 		ON u.id = fu.fk_usuario;
+
+-- Listar todos os comentários
+SELECT nome, comunidade.id, titulo, mensagem, 
+	DATE_FORMAT(dt_publicacao, '%d/%m/%Y') AS dataPublicacao
+	FROM comunidade JOIN usuario
+		ON fk_usuario = usuario.id
+        ORDER BY id DESC;

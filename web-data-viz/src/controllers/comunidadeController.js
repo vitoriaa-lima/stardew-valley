@@ -31,6 +31,24 @@ function cadastrar(req, res) {
     }
 }
 
+function listar(req, res) {
+    comunidadeModel.listar().then(
+        function (resultado) {
+            if (resultado.length > 0) {
+                res.json(resultado);
+            } else {
+                res.status(404).send(`Comentários não encontrados.`);
+            }
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        }
+    )
+}
+
 module.exports = {
-    cadastrar
+    cadastrar,
+    listar
 };

@@ -7,4 +7,8 @@ router.post("/cadastrar", function(req, res){
     comunidadeController.cadastrar(req, res);
 })
 
+router.get("/listar", function(req, res){
+    comunidadeController.listar(req, res);
+})
+
 module.exports = router;
