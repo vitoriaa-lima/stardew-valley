@@ -12,11 +12,15 @@ function cadastrar(titulo, mensagem, fkUsuario) {
 
 function listar() {
     var instrucaoSql =`
-        SELECT nome, comunidade.id, titulo, mensagem, 
+        SELECT nome,
+            usuario.id AS idAutor, 
+            comunidade.id AS idPublicacao, 
+            titulo, 
+            mensagem, 
 	        DATE_FORMAT(dt_publicacao, '%d/%m/%Y') AS dataPublicacao
 	    FROM comunidade JOIN usuario
             ON fk_usuario = usuario.id
-        ORDER BY id DESC;
+        ORDER BY comunidade.id DESC;
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

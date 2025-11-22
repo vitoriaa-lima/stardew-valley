@@ -77,6 +77,7 @@ main {
   font-weight: bold;
   text-decoration: none;
   color: #3E2429;
+  cursor: pointer;
 }
 
 
@@ -381,6 +382,19 @@ main {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.container-comunidade-parte2 .comentarios .comentario .comentario-autor{
+  display: flex;
+  justify-content: space-between;
+}
+.container-comunidade-parte2 .comentarios .comentario .comentario-autor img{
+  height: 30px;
+}
+
+.container-comunidade-parte2 .comentarios .comentario .comentario-autor .usuario-acoes{
+  display: flex;
+  gap: 10px;
 }
 
 /* Estilização Comunidade ACABA AQUI */

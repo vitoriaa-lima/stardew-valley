@@ -56,10 +56,6 @@
                         <span id="selecionada">Comunidade</span>
                     </a>
 
-                    <a onclick="mostrarAlerta()" class="opcao">
-                        <img src="../assets/img/cruzadinha.svg">
-                        <span>Cruzadinha</span>
-                    </a>
                 </div>
             </div>
 
@@ -167,6 +163,14 @@
                     console.log(resposta);
                     for (var i = 0; i < resposta.length; i++) {
                         dadoAtual = resposta[i];
+                        var imagemApagar = "";
+
+                        idPublicacao = dadoAtual.idPublicacao;
+
+                        if (dadoAtual.idAutor == sessionStorage.ID_USUARIO) {
+                            imagemApagar = `<img onclick="deletar(${idPublicacao})" src="../assets/img/lixeira.png">`;
+                        }
+
                         div_comentarios.innerHTML += `
                             <div class="comentario">
                                 <div class="comentario-corpo">
@@ -174,9 +178,18 @@
                                     <p>${dadoAtual.mensagem}</p>
                                 </div>
 
-                                <h2>-${dadoAtual.nome} ${dadoAtual.dataPublicacao}</h2>
+                                <div class="comentario-autor">
+                                    <h2>-${dadoAtual.nome} ${dadoAtual.dataPublicacao}</h2>
+                                    <div class="usuario-acoes">
+                                        <img src="../assets/img/curtida-vazia.png">
+                                        ${imagemApagar}
+                                    </div>
+                                </div>
                             </div>
                         `;
+
+
+
                     }
                 })
             } else {
@@ -186,6 +199,19 @@
         }).catch(function (resposta) {
             console.error(resposta);
             alert('Erro')
+        })
+    }
+
+    function deletar(id){
+        fetch("/comunidade/deletar", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta){
+            if(resposta.ok){
+                
+            }
         })
     }
 
