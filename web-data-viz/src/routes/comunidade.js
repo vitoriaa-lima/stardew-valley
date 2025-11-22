@@ -11,4 +11,8 @@ router.get("/listar", function(req, res){
     comunidadeController.listar(req, res);
 })
 
+router.delete("/deletar/:idComentario", function(req, res){
+    comunidadeController.deletar(req, res);
+})
+
 module.exports = router;

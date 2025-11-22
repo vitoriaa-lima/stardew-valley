@@ -27,7 +27,17 @@ function listar() {
     return database.executar(instrucaoSql);
 }
 
+function deletar(idComentario) {
+    var instrucaoSql = `
+        DELETE FROM comunidade WHERE id = ${idComentario};
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     cadastrar,
-    listar
+    listar, 
+    deletar
 };

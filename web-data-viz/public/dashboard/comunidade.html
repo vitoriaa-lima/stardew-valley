@@ -17,11 +17,10 @@
 </head>
 
 <body onload="validarSessao()">
-    <div class="construcao-pai">
-        <div id="alerta_construcao" class="construcao">
-            <h1>Robin está trabalhando!</h1>
-            <img src="../assets/img/robin_construcao.png">
-            <p>Esse espaço está em<br>construção. Volte depois!</p>
+    <div class="alerta-pai">
+        <div id="alerta_comentario" class="alerta-erro">
+            <img src="../assets/img/comentario.png">
+            <span id="span_comentario_alerta">Comentário realizado com sucesso!</span>
         </div>
     </div>
     <div class="alerta-pai">
@@ -138,6 +137,8 @@
             console.log("resposta:" + resposta);
 
             if (resposta.ok) {
+                span_comentario_alerta.innerHTML = `Comentário realizado com sucesso!`;
+                mostrarAlerta();
                 ocultarParte1();
                 listar();
             } else {
@@ -161,14 +162,13 @@
                 resposta.json().then(function (resposta) {
 
                     console.log(resposta);
+                    div_comentarios.innerHTML = "";
                     for (var i = 0; i < resposta.length; i++) {
                         dadoAtual = resposta[i];
                         var imagemApagar = "";
 
-                        idPublicacao = dadoAtual.idPublicacao;
-
                         if (dadoAtual.idAutor == sessionStorage.ID_USUARIO) {
-                            imagemApagar = `<img onclick="deletar(${idPublicacao})" src="../assets/img/lixeira.png">`;
+                            imagemApagar = `<img onclick="deletar(${dadoAtual.idPublicacao})" src="../assets/img/lixeira.png">`;
                         }
 
                         div_comentarios.innerHTML += `
@@ -202,17 +202,24 @@
         })
     }
 
-    function deletar(id){
-        fetch("/comunidade/deletar", {
+    function deletar(idComentario){
+        fetch(`/comunidade/deletar/${idComentario}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
             }
         }).then(function (resposta){
             if(resposta.ok){
-                
+                 
+                span_comentario_alerta.innerHTML = `Comentário deletado com sucesso!`;
+                mostrarAlerta();
+                listar();
+            } else{
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
             }
-        })
+        }).catch(function (resposta){
+            console.log(`#ERRO: ${resposta}`);
+        });
     }
 
 
@@ -242,10 +249,10 @@
 
 
     function mostrarAlerta() {
-        alerta_construcao.style.opacity = "1";
+        alerta_comentario.style.opacity = "1";
 
         setTimeout(() => {
-            alerta_construcao.style.opacity = "0";
+            alerta_comentario.style.opacity = "0";
         }, 3000);
     }
 </script>
