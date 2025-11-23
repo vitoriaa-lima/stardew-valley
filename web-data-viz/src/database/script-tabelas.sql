@@ -9,7 +9,6 @@ nome VARCHAR(50),
 aniversario VARCHAR(50),
 genero CHAR(1),
 CONSTRAINT chk_genero CHECK(genero IN('M', 'F')),
-endereco VARCHAR(100),
 casavel TINYINT,
 CONSTRAINT chk_casavel CHECK(casavel IN(0, 1)),
 presente_favorito VARCHAR(50),
@@ -17,41 +16,41 @@ caminho_img VARCHAR(100)
 );
 
 INSERT INTO personagem VALUES
-	(DEFAULT, 'Alex', '13 de Verão', 'M', 'Estrada do Rio nº 1', 1, 'Café da manhã completo', '../assets/img-caminho/alex.png'),
-	(DEFAULT, 'Abigail', '13 de Outono', 'F', 'Armazém do Pierre', 1, 'Ametista', '../assets/img-caminho/abigail.png'),
-	(DEFAULT, 'Harvey', '14 de Inverno', 'M', 'Clínica do Harvey', 1, 'Café', '../assets/img-caminho/harvey.png'),
-	(DEFAULT, 'Shane', '20 de Primavera', 'M', 'Casa da Marnie', 1, 'Pimenta', '../assets/img-caminho/shane.png'),
-	(DEFAULT, 'Penny', '2 de Outono', 'F', 'Trailer', 1, 'Melão', '../assets/img-caminho/penny.png'),
-	(DEFAULT, 'Leah', '23 de Inverno', 'F', 'Cabana da Leah', 1, 'Salada', '../assets/img-caminho/leah.png'),
-	(DEFAULT, 'Sebastian', '10 de Inverno', 'M', 'Casa da Montanha', 1, 'Lágrima congelada', '../assets/img-caminho/sebastian.png'),
-	(DEFAULT, 'Elliott', '5 de Outono', 'M', 'Cabana na Praia', 1, 'Lagosta', '../assets/img-caminho/elliott.png'),
-	(DEFAULT, 'Maru', '10 de Verão', 'F', 'Casa da Montanha', 1, 'Bateria', '../assets/img-caminho/maru.png'),
-	(DEFAULT, 'Haley', '14 de Primavera', 'F', 'Casa Sul da Praça', 1, 'Girassol', '../assets/img-caminho/haley.png'),
-	(DEFAULT, 'Emily', '27 de Primavera', 'F', 'Casa Sul da Praça', 1, 'Ametista', '../assets/img-caminho/emily.png'),
-	(DEFAULT, 'Sam', '17 de Verão', 'M', 'Casa Oeste da Praça', 1, 'Pizza', '../assets/img-caminho/sam.png'),
+	(DEFAULT, 'Alex', '13 de Verão', 'M', 1, 'Café da manhã completo', '../assets/img-caminho/alex.png'),
+	(DEFAULT, 'Abigail', '13 de Outono', 'F', 1, 'Ametista', '../assets/img-caminho/abigail.png'),
+	(DEFAULT, 'Harvey', '14 de Inverno', 'M', 1, 'Café', '../assets/img-caminho/harvey.png'),
+	(DEFAULT, 'Shane', '20 de Primavera', 'M', 1, 'Pimenta', '../assets/img-caminho/shane.png'),
+	(DEFAULT, 'Penny', '2 de Outono', 'F', 1, 'Melão', '../assets/img-caminho/penny.png'),
+	(DEFAULT, 'Leah', '23 de Inverno', 'F', 1, 'Salada', '../assets/img-caminho/leah.png'),
+	(DEFAULT, 'Sebastian', '10 de Inverno', 'M',1, 'Lágrima congelada', '../assets/img-caminho/sebastian.png'),
+	(DEFAULT, 'Elliott', '5 de Outono', 'M', 1, 'Lagosta', '../assets/img-caminho/elliott.png'),
+	(DEFAULT, 'Maru', '10 de Verão', 'F', 1, 'Bateria', '../assets/img-caminho/maru.png'),
+	(DEFAULT, 'Haley', '14 de Primavera', 'F', 1, 'Girassol', '../assets/img-caminho/haley.png'),
+	(DEFAULT, 'Emily', '27 de Primavera', 'F', 1, 'Ametista', '../assets/img-caminho/emily.png'),
+	(DEFAULT, 'Sam', '17 de Verão', 'M', 1, 'Pizza', '../assets/img-caminho/sam.png'),
     
-	(DEFAULT, 'Linus', '3 de Inverno', 'M', 'Tenda na Montanha', 0, 'Coco ou Inhame', '../assets/img-caminho/linus.png'),
-	(DEFAULT, 'Robin', '21 de Outono', 'F', 'Carpintaria', 0, 'Espaguete', '../assets/img-caminho/robin.png'),
-	(DEFAULT, 'Demetrius', '19 de Verão', 'M', 'Casa da Montanha', 0, 'Morango', '../assets/img-caminho/demetrius.png'),
-	(DEFAULT, 'Jodi', '11 de Outono', 'F', 'Casa Oeste da Praça', 0, 'Diamante', '../assets/img-caminho/jodi.png'),
-	(DEFAULT, 'Kent', '4 de Primavera', 'M', 'Casa Oeste da Praça', 0, 'Avelãs torradas', '../assets/img-caminho/kent.png'),
-	(DEFAULT, 'Caroline', '7 de Inverno', 'F', 'Armazém do Pierre', 0, 'Chá Verde', '../assets/img-caminho/caroline.png'),
-	(DEFAULT, 'Pierre', '26 de Primavera', 'M', 'Armazém do Pierre', 0, 'Lula frita', '../assets/img-caminho/pierre.png'),
-	(DEFAULT, 'Gus', '8 de Verão', 'M', 'Saloon Fruta Estelar', 0, 'Diamante', '../assets/img-caminho/gus.png'),
-	(DEFAULT, 'Pam', '18 de Primavera', 'F', 'Trailer', 0, 'Cerveja', '../assets/img-caminho/pam.png'),
-	(DEFAULT, 'George', '24 de Outono', 'M', 'Casa ao Sul da Praça', 0, 'Alho-poró', '../assets/img-caminho/george.png'),
-	(DEFAULT, 'Evelyn', '20 de Inverno', 'F', 'Casa ao Sul da Praça', 0, 'Diamante', '../assets/img-caminho/evelyn.png'),
-	(DEFAULT, 'Clint', '26 de Inverno', 'M', 'Ferraria', 0, 'Jade ou Esmeralda', '../assets/img-caminho/clint.png'),
-	(DEFAULT, 'Marnie', '18 de Outono', 'F', 'Rancho da Marnie', 0, 'Diamante', '../assets/img-caminho/marnie.png'),
-	(DEFAULT, 'Lewis', '7 de Primavera', 'M', 'Casa do Prefeito', 0, 'Pimenta quente', '../assets/img-caminho/lewis.png'),
-	(DEFAULT, 'Willy', '24 de Verão', 'M', 'Cabana de Pesca', 0, 'Abóbora ou Polvo', '../assets/img-caminho/willy.png'),
-	(DEFAULT, 'Krobus', '1 de Inverno', 'M', 'Esgoto', 0, 'Abóbora ou Diamante', '../assets/img-caminho/krobus.png'),
-	(DEFAULT, 'Sandy', '15 de Outono', 'F', 'Oásis no Deserto', 0, 'Narciso', '../assets/img-caminho/sandy.png'),
-	(DEFAULT, 'Wizard', '17 de Inverno', 'M', 'Torre do Mago', 0, 'Essência Nula', '../assets/img-caminho/wizard.png'),
-	(DEFAULT, 'Leo', '26 de Verão', 'M', 'Ilha Gengibre', 0, 'Manga', '../assets/img-caminho/leo.png'),
-    (DEFAULT, 'Anão', '22 de Verão', 'M', 'Caverna oriental', 0, 'Rubi ou Jade', '../assets/img-caminho/anao.png'),
-    (DEFAULT, 'Vincent', '10 de Primavera', 'M', 'Casa Oeste da Praça', 0, 'Uva ou Bolo Rosa', '../assets/img-caminho/vincent.png'),
-    (DEFAULT, 'Jas', '4 de Verão', 'F', 'Rancho da Marnie', 0, 'Rosa-de-fada ou Bolo Rosa', '../assets/img-caminho/jas.png');
+	(DEFAULT, 'Linus', '3 de Inverno', 'M', 0, 'Coco ou Inhame', '../assets/img-caminho/linus.png'),
+	(DEFAULT, 'Robin', '21 de Outono', 'F', 0, 'Espaguete', '../assets/img-caminho/robin.png'),
+	(DEFAULT, 'Demetrius', '19 de Verão', 'M', 0, 'Morango', '../assets/img-caminho/demetrius.png'),
+	(DEFAULT, 'Jodi', '11 de Outono', 'F', 0, 'Diamante', '../assets/img-caminho/jodi.png'),
+	(DEFAULT, 'Kent', '4 de Primavera', 'M', 0, 'Avelãs torradas', '../assets/img-caminho/kent.png'),
+	(DEFAULT, 'Caroline', '7 de Inverno', 'F', 0, 'Chá Verde', '../assets/img-caminho/caroline.png'),
+	(DEFAULT, 'Pierre', '26 de Primavera', 'M', 0, 'Lula frita', '../assets/img-caminho/pierre.png'),
+	(DEFAULT, 'Gus', '8 de Verão', 'M', 0, 'Diamante', '../assets/img-caminho/gus.png'),
+	(DEFAULT, 'Pam', '18 de Primavera', 'F', 0, 'Cerveja', '../assets/img-caminho/pam.png'),
+	(DEFAULT, 'George', '24 de Outono', 'M', 0, 'Alho-poró', '../assets/img-caminho/george.png'),
+	(DEFAULT, 'Evelyn', '20 de Inverno', 'F', 0, 'Diamante', '../assets/img-caminho/evelyn.png'),
+	(DEFAULT, 'Clint', '26 de Inverno', 'M', 0, 'Jade ou Esmeralda', '../assets/img-caminho/clint.png'),
+	(DEFAULT, 'Marnie', '18 de Outono', 'F', 0, 'Diamante', '../assets/img-caminho/marnie.png'),
+	(DEFAULT, 'Lewis', '7 de Primavera', 'M', 0, 'Pimenta quente', '../assets/img-caminho/lewis.png'),
+	(DEFAULT, 'Willy', '24 de Verão', 'M', 0, 'Abóbora ou Polvo', '../assets/img-caminho/willy.png'),
+	(DEFAULT, 'Krobus', '1 de Inverno', 'M', 0, 'Abóbora ou Diamante', '../assets/img-caminho/krobus.png'),
+	(DEFAULT, 'Sandy', '15 de Outono', 'F', 0, 'Narciso', '../assets/img-caminho/sandy.png'),
+	(DEFAULT, 'Wizard', '17 de Inverno', 'M', 0, 'Essência Nula', '../assets/img-caminho/wizard.png'),
+	(DEFAULT, 'Leo', '26 de Verão', 'M', 0, 'Manga', '../assets/img-caminho/leo.png'),
+    (DEFAULT, 'Anão', '22 de Verão', 'M', 0, 'Rubi ou Jade', '../assets/img-caminho/anao.png'),
+    (DEFAULT, 'Vincent', '10 de Primavera', 'M', 0, 'Uva ou Bolo Rosa', '../assets/img-caminho/vincent.png'),
+    (DEFAULT, 'Jas', '4 de Verão', 'F', 0, 'Rosa-de-fada ou Bolo Rosa', '../assets/img-caminho/jas.png');
 
 
 CREATE TABLE fazenda(
@@ -165,6 +164,20 @@ CONSTRAINT fk_comunidade_usuario
 		REFERENCES usuario(id)
 );
 
+CREATE TABLE curtida(
+fk_usuario INT,
+fk_publicacao INT,
+fk_usuario_autor INT,
+status_curtida INT,
+FOREIGN KEY (fk_usuario)
+	REFERENCES usuario(id),
+FOREIGN KEY (fk_publicacao)
+	REFERENCES comunidade(id),
+FOREIGN KEY (fk_usuario_autor)
+	REFERENCES comunidade(fk_usuario),
+PRIMARY KEY(fk_usuario, fk_publicacao, fk_usuario_autor)
+);
+
 SELECT * FROM usuario;
 SELECT * FROM fazenda_usuario;
 SELECT * FROM fazenda;
@@ -176,7 +189,6 @@ SELECT * FROM comunidade;
 -- Idade média dos jogadores
 SELECT TRUNCATE(AVG(TIMESTAMPDIFF(YEAR, dt_nascimento, NOW())), 0) AS idadeMedia FROM usuario;
 
-
 -- Personagem mais favoritado
 SELECT p.nome AS nomePersonagem,
 	COUNT(fk_personagem_favorito) AS frequencia
@@ -187,13 +199,11 @@ FROM fazenda_usuario AS fu
     ORDER BY frequencia DESC
 	LIMIT 1;
 
-
 -- Alcançaram a perfeição
 SELECT COUNT(u.id) AS totalUsuarios,
 	SUM(verdadeira_perfeicao) AS alcancaramVerdadeiraPerfeicao
     FROM usuario AS u JOIN fazenda_usuario AS fu
 		ON u.id = fu.fk_usuario;
-
 
 -- Total de usuários dividido por gênero
 SELECT u.genero, COUNT(u.genero) AS generoTotal
@@ -215,8 +225,6 @@ SELECT f.tipo AS tipoFazenda,
 		JOIN fazenda AS f
 			ON f.id = fu.fk_fazenda_favorita
 		GROUP BY f.tipo;
-
-
 
 -- Total de usuários que Alcançaram ou não a perfeição ou a verdadeira perfeição
 SELECT COUNT(u.id) AS totalUsuarios,
