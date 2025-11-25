@@ -154,14 +154,15 @@ PRIMARY KEY (id, fk_usuario)
 );
 
 CREATE TABLE comunidade(
-id INT PRIMARY KEY AUTO_INCREMENT,
+id INT AUTO_INCREMENT,
 fk_usuario INT,
 titulo VARCHAR(100),
 mensagem VARCHAR(500),
 dt_publicacao DATETIME DEFAULT CURRENT_TIMESTAMP(),
 CONSTRAINT fk_comunidade_usuario
 	FOREIGN KEY (fk_usuario)
-		REFERENCES usuario(id)
+		REFERENCES usuario(id),
+PRIMARY KEY (id, fk_usuario)
 );
 
 CREATE TABLE curtida(
@@ -239,3 +240,12 @@ SELECT nome, comunidade.id, titulo, mensagem,
 	FROM comunidade JOIN usuario
 		ON fk_usuario = usuario.id
         ORDER BY id DESC;
+        
+-- Listar posts curtidos de um determinado usuário
+SELECT fk_publicacao AS idPublicacao, 
+	status_curtida AS statusCurtida,
+    fk_usuario AS idUsuario
+	FROM curtida
+	WHERE idUsuario = ${idUsuario}
+		AND statusCurtida = 1;
+    

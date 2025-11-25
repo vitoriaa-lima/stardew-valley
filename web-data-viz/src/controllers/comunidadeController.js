@@ -58,7 +58,46 @@ function deletar(req, res) {
     ).catch(
         function (erro) {
             console.log(erro);
-            console.log("Houve um erro ao deletar o post", erro.sqlMessage);
+            console.log("Houve um erro ao deletar o comentário", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    )
+}
+
+function curtir(req, res) {
+    var idComentario = req.body.idComentario;
+    var idUsuario = req.body.idUsuario;
+    var idAutor = req.body.idAutor;
+
+    console.log(idComentario);
+    console.log(idUsuario);
+    console.log(idAutor);
+
+    comunidadeModel.curtir(idComentario, idUsuario, idAutor).then(
+        function (resultado) {
+            res.json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao curtir o comentário", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    )
+
+}
+
+function listarCurtidos(req, res) {
+    var idUsuario = req.params.idUsuario;
+
+    comunidadeModel.listarCurtidos(idUsuario).then(
+        function (resultado) {
+            res.json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao curtir o comentário", erro.sqlMessage);
             res.status(500).json(erro.sqlMessage);
         }
     )
@@ -67,5 +106,7 @@ function deletar(req, res) {
 module.exports = {
     cadastrar,
     listar,
-    deletar
+    deletar,
+    curtir,
+    listarCurtidos
 };

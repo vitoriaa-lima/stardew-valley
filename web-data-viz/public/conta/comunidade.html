@@ -105,6 +105,7 @@
                         aqui.</span></h1>
 
                 <div id="div_comentarios" class="comentarios"></div>
+
             </div>
         </div>
     </main>
@@ -164,8 +165,20 @@
                     console.log(resposta);
                     div_comentarios.innerHTML = "";
                     for (var i = 0; i < resposta.length; i++) {
+
                         dadoAtual = resposta[i];
+
+                        var idUsuario = sessionStorage.ID_USUARIO;
+                        var idAutor = dadoAtual.idAutor;
+                        var idPublicacao = dadoAtual.idPublicacao;
+
+
                         var imagemApagar = "";
+
+                        document.addEventListener("DOMContentLoaded", () => {
+
+                        })
+
 
                         if (dadoAtual.idAutor == sessionStorage.ID_USUARIO) {
                             imagemApagar = `<img onclick="deletar(${dadoAtual.idPublicacao})" src="../assets/img/lixeira.png">`;
@@ -181,17 +194,17 @@
                                 <div class="comentario-autor">
                                     <h2>-${dadoAtual.nome} ${dadoAtual.dataPublicacao}</h2>
                                     <div class="usuario-acoes">
-                                        <img src="../assets/img/curtida-vazia.png">
-                                        ${imagemApagar}
+                                        <img id="img_curtida${idPublicacao}" onclick="curtir(${idPublicacao}, ${idUsuario}, ${idAutor})" src="../assets/img/curtida-vazia.png">
+                                        ${imagemApagar}   
                                     </div>
                                 </div>
                             </div>
                         `;
 
-
-
                     }
                 })
+
+                obterMudarCurtida();
             } else {
                 throw ('Houve um erro na API!');
 
@@ -202,22 +215,77 @@
         })
     }
 
-    function deletar(idComentario){
+    function curtir(idPublicacao, idUsuario, idAutor) {
+        fetch(`/comunidade/curtir`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idComentario: idPublicacao,
+                idUsuario: idUsuario,
+                idAutor: idAutor
+            })
+        }).then(function (resposta) {
+            console.log("resposta:" + resposta);
+
+            if (resposta.ok) {
+                obterMudarCurtida(idPublicacao);
+            } else {
+                console.log("NÃO PASSOU!");
+            }
+
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+
+        })
+
+        return false;
+    }
+
+    function obterMudarCurtida(idComentario) {
+
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+        fetch(`/comunidade/listarCurtidos/${idUsuario}`).then(
+
+            function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                        mudarCurtida(resposta, idComentario);
+                        console.log(resposta);
+                    })
+                }
+            }
+        )
+    }
+
+    function mudarCurtida(resposta, idComentario) {
+        for (var i = 0; i < resposta.length; i++) {
+            var registroAtual = resposta[i];
+
+            let imagem = document.getElementById(`img_curtida${registroAtual.idPublicacao}`)
+            imagem.onclick = null;
+            imagem.src = "../assets/img/curtida-cheia.png";
+        }
+    }
+
+    function deletar(idComentario) {
         fetch(`/comunidade/deletar/${idComentario}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
             }
-        }).then(function (resposta){
-            if(resposta.ok){
-                 
+        }).then(function (resposta) {
+            if (resposta.ok) {
+
                 span_comentario_alerta.innerHTML = `Comentário deletado com sucesso!`;
                 mostrarAlerta();
                 listar();
-            } else{
+            } else {
                 throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
             }
-        }).catch(function (resposta){
+        }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
         });
     }

@@ -15,4 +15,12 @@ router.delete("/deletar/:idComentario", function(req, res){
     comunidadeController.deletar(req, res);
 })
 
+router.post("/curtir", function(req, res){
+    comunidadeController.curtir(req, res);
+})
+
+router.get("/listarCurtidos/:idUsuario", function(req, res){
+    comunidadeController.listarCurtidos(req, res);
+})
+
 module.exports = router;

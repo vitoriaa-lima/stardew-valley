@@ -11,7 +11,7 @@ function cadastrar(titulo, mensagem, fkUsuario) {
 }
 
 function listar() {
-    var instrucaoSql =`
+    var instrucaoSql = `
         SELECT nome,
             usuario.id AS idAutor, 
             comunidade.id AS idPublicacao, 
@@ -36,8 +36,31 @@ function deletar(idComentario) {
     return database.executar(instrucaoSql);
 }
 
+function curtir(idComentario, idUsuario, idAutor) {
+    var instrucaoSql = `
+        INSERT INTO curtida VALUES (${idUsuario}, ${idComentario}, ${idAutor}, 1);
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function listarCurtidos(idUsuario) {
+    var instrucaoSql = `
+        SELECT fk_publicacao AS idPublicacao, 
+            fk_usuario AS idUsuario
+	        FROM curtida
+	        WHERE fk_usuario = ${idUsuario};
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     cadastrar,
-    listar, 
-    deletar
+    listar,
+    deletar,
+    curtir,
+    listarCurtidos
 };
