@@ -246,6 +246,7 @@ SELECT fk_publicacao AS idPublicacao,
 	status_curtida AS statusCurtida,
     fk_usuario AS idUsuario
 	FROM curtida
-	WHERE idUsuario = ${idUsuario}
-		AND statusCurtida = 1;
+	WHERE fk_usuario = 1;
+    
+    select * from curtida;
     
