@@ -188,7 +188,7 @@ SELECT * FROM comunidade;
 
 
 -- Idade média dos jogadores
-SELECT TRUNCATE(AVG(TIMESTAMPDIFF(YEAR, dt_nascimento, NOW())), 0) AS idadeMedia FROM usuario;
+SELECT ROUND(AVG(TIMESTAMPDIFF(YEAR, dt_nascimento, NOW()))) AS idadeMedia FROM usuario;
 
 -- Personagem mais favoritado
 SELECT p.nome AS nomePersonagem,
@@ -247,6 +247,3 @@ SELECT fk_publicacao AS idPublicacao,
     fk_usuario AS idUsuario
 	FROM curtida
 	WHERE fk_usuario = 1;
-    
-    select * from curtida;
-    

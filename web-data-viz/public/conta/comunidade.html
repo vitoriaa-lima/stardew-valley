@@ -275,7 +275,10 @@
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            body: JSON.stringify({
+                fkUsuario: sessionStorage.ID_USUARIO
+            })
         }).then(function (resposta) {
             if (resposta.ok) {
 

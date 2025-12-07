@@ -27,9 +27,15 @@ function listar() {
     return database.executar(instrucaoSql);
 }
 
-function deletar(idComentario) {
+async function deletar(idComentario, fkUsuario) {
+   var sqlCurtida = `DELETE FROM curtida WHERE fk_usuario_autor = ${fkUsuario};
+    `;
+
+    console.log("Executando SQL: " + sqlCurtida);
+    await database.executar(sqlCurtida);
+
     var instrucaoSql = `
-        DELETE FROM comunidade WHERE id = ${idComentario};
+        DELETE FROM comunidade WHERE id = ${idComentario} AND fk_usuario = ${fkUsuario};
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

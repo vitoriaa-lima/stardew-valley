@@ -50,8 +50,9 @@ function listar(req, res) {
 
 function deletar(req, res) {
     var idComentario = req.params.idComentario;
+    var fkUsuario = req.body.fkUsuario;
 
-    comunidadeModel.deletar(idComentario).then(
+    comunidadeModel.deletar(idComentario, fkUsuario).then(
         function (resultado) {
             res.json(resultado);
         }
